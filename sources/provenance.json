@@ -1,0 +1,89 @@
+{
+  "title": "Eine ausnahme der ersten lautverschiebung",
+  "author": "Karl Verner",
+  "volume": "Zeitschrift für vergleichende Sprachforschung 23 (1877), pp. 97–130",
+  "note": "Article ends Kopenhagen, juli 1875. Bibliographies variously date its appearance 1875/1876/1877; 1877 is the volume date.",
+  "item": "https://archive.org/details/india.history.resource.77512",
+  "pdf": "https://archive.org/download/india.history.resource.77512/77512.pdf",
+  "pdfSha256": "d42ce9b3a75cb5e794cb845b86169051a5e561311e18725f6fcb193393ace180",
+  "render": "Poppler pdftoppm, complete PDF pages, grayscale PNG, longest edge 2600 px; no cropping or retouching",
+  "pages": [
+    {
+      "page": 97,
+      "pdfPage": 103,
+      "leaf": 102,
+      "file": "verner-97.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n102/mode/1up"
+    },
+    {
+      "page": 99,
+      "pdfPage": 105,
+      "leaf": 104,
+      "file": "verner-99.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n104/mode/1up"
+    },
+    {
+      "page": 100,
+      "pdfPage": 106,
+      "leaf": 105,
+      "file": "verner-100.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n105/mode/1up"
+    },
+    {
+      "page": 101,
+      "pdfPage": 107,
+      "leaf": 106,
+      "file": "verner-101.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n106/mode/1up"
+    },
+    {
+      "page": 102,
+      "pdfPage": 108,
+      "leaf": 107,
+      "file": "verner-102.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n107/mode/1up"
+    },
+    {
+      "page": 114,
+      "pdfPage": 120,
+      "leaf": 119,
+      "file": "verner-114.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n119/mode/1up"
+    },
+    {
+      "page": 115,
+      "pdfPage": 121,
+      "leaf": 120,
+      "file": "verner-115.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n120/mode/1up"
+    },
+    {
+      "page": 117,
+      "pdfPage": 123,
+      "leaf": 122,
+      "file": "verner-117.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n122/mode/1up"
+    },
+    {
+      "page": 118,
+      "pdfPage": 124,
+      "leaf": 123,
+      "file": "verner-118.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n123/mode/1up"
+    },
+    {
+      "page": 119,
+      "pdfPage": 125,
+      "leaf": 124,
+      "file": "verner-119.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n124/mode/1up"
+    },
+    {
+      "page": 130,
+      "pdfPage": 136,
+      "leaf": 135,
+      "file": "verner-130.png",
+      "url": "https://archive.org/details/india.history.resource.77512/page/n135/mode/1up"
+    }
+  ]
+}

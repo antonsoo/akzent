@@ -1,0 +1,32 @@
+[
+  {
+    "file": "gentium.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gentiumplus/GentiumPlus-Regular.ttf",
+    "sha256": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+    "conversion": "None"
+  },
+  {
+    "file": "gentium-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gentiumplus/OFL.txt",
+    "sha256": "c309a440be606e283ccacc746662d714b9c5b5a7a0a10dd2514b90206b55ddfe",
+    "conversion": "None"
+  },
+  {
+    "file": "hanken-latin.woff2",
+    "url": "https://github.com/google/fonts/tree/main/ofl/hankengrotesk",
+    "sha256": "e9201eddf1d41d0b62253295d869ce3cf65768f7102b797f02c7f8c876b4a9d5",
+    "conversion": "Retained WOFF2 from Officina; Google Fonts Latin/Latin-ext subsets"
+  },
+  {
+    "file": "hanken-latin-ext.woff2",
+    "url": "https://github.com/google/fonts/tree/main/ofl/hankengrotesk",
+    "sha256": "768af2923e0ab1549f1dfba0a5c8ea749c4c01f01d8e77ffaf7fcd12f57a0a24",
+    "conversion": "Retained WOFF2 from Officina; Google Fonts Latin/Latin-ext subsets"
+  },
+  {
+    "file": "hanken-OFL.txt",
+    "url": "https://github.com/google/fonts/tree/main/ofl/hankengrotesk",
+    "sha256": "26ff01d30304ca6dc862c560bc80cd145c7f9ede745b4bc801f0207f1438e417",
+    "conversion": "Retained WOFF2 from Officina; Google Fonts Latin/Latin-ext subsets"
+  }
+]
