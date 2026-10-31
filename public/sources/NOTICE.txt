@@ -1,0 +1,9 @@
+Karl Verner, Eine ausnahme der ersten lautverschiebung, Zeitschrift für vergleichende Sprachforschung 23 (1877), pp. 97–130. Article signed Copenhagen, July 1875.
+
+The original text and historical pages are public domain. Eleven complete pages are retained from the scan of the volume at Internet Archive item india.history.resource.77512, digitized with assistance from the Government of Maharashtra (2018). See provenance.json for the original PDF identity and page mapping.
+
+The PNGs are complete grayscale page renderings made with Poppler pdftoppm; no cropping, retouching, or removal of marks. They are not diplomatic transcriptions.
+
+The app supplies new English translations and normalized German excerpts. It normalizes the dental symbol to þ and uses modern IAST for Sanskrit, including ā instead of Verner’s â and ś instead of ç. Gothic words are romanized; no Gothic stress is marked. Sanskrit stems ending in a hyphen are not nominatives. In the comparison table, śatám/hund are citation forms beside Verner’s śatá-/hunda-.
+
+The 1967 English translation hosted by the University of Texas Linguistics Research Center was consulted as a comparison, not copied into this edition.

@@ -1,0 +1,47 @@
+{
+  "name": "@antonsoloviev/akzent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Test an accent rule on Verner\u2019s word comparisons, then move the accent through his invented word.",
+  "author": "Anthony Mercer <anthony@praviel.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antonsoo/akzent.git"
+  },
+  "homepage": "https://antonsoo.github.io/akzent/",
+  "keywords": [
+    "etymology",
+    "historical-linguistics",
+    "verners-law",
+    "sanskrit",
+    "gothic",
+    "ancient-greek",
+    "education"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4392 --strictPort",
+    "preview": "vite preview --host 127.0.0.1 --port 4391 --strictPort",
+    "build": "tsc --noEmit && vite build && node scripts/offline.mjs",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "verify:sources": "node scripts/verify-sources.mjs",
+    "test:browser": "node scripts/browser.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run verify:sources && npm run build"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@biomejs/biome": "2.6.2",
+    "@types/node": "24.19.2",
+    "playwright": "1.63.0",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.5"
+  }
+}
