@@ -31,3 +31,15 @@ The source-publication audit compares the final clean local branch with
 credentials. This is separate from the hosted-build identity above. Documentation
 and receipts may advance after the build's source commit; that does not change
 its captured 24-file application inventory.
+
+## Deployment follow-up
+
+The initial Pages template replaced the static branch with a force push.
+It now copies the reviewed build into a worktree of the existing `gh-pages`
+branch and pushes a normal descendant only when files change. Older hashed
+assets remain for readers with a cached entry document. The workflow also
+checks canonical hosted bytes after publishing.
+
+The copy/stage procedure was exercised locally against the actual served
+`b03d90f` branch and produced no changes for the already reviewed output.
+That local rehearsal is not a successful execution of the remote workflow.
