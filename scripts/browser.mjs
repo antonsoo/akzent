@@ -7,7 +7,8 @@ import { pathToFileURL } from "node:url";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium, firefox } from "playwright";
 
-const output = resolve(process.argv[2] ?? "test-results/browser");
+const publicUrl = /^https?:/.test(process.argv[2] ?? "") ? process.argv[2] : undefined;
+const output = resolve((publicUrl ? process.argv[3] : process.argv[2]) ?? "test-results/browser");
 await mkdir(output, { recursive: true });
 const root = resolve("dist");
 const files = JSON.parse(await readFile("src/asset-manifest.json", "utf8"));
@@ -44,8 +45,9 @@ const server = createServer(async (request, response) => {
   }
 });
 await new Promise((done) => server.listen(0, "127.0.0.1", done));
-const origin = `http://127.0.0.1:${server.address().port}`;
-const url = `${origin}/akzent/`;
+const url = publicUrl ?? `http://127.0.0.1:${server.address().port}/akzent/`;
+const origin = new URL(url).origin;
+const offlineMode = publicUrl ? "browser-offline" : "actual-origin-refusal";
 const results = [];
 async function textContains(page, selector, value) {
   await page.waitForFunction(
@@ -215,8 +217,10 @@ try {
         assert.deepEqual(light.violations, [], `${name}-${width}: light accessibility`);
         assert.deepEqual(dark.violations, [], `${name}-${width}: dark accessibility`);
 
-        // Refuse actual origin connections. Keep navigator.onLine true to exercise a real outage.
-        networkAvailable = false;
+        // A local run refuses origin connections with navigator.onLine still true.
+        // The public run disables this browser's network; it cannot turn off the public origin.
+        if (publicUrl) await context.setOffline(true);
+        else networkAvailable = false;
         await page.reload({ waitUntil: "domcontentloaded" });
         await textContains(page, "#offline-status", "available offline");
         assert.equal(await page.locator("#preceding").isChecked(), true);
@@ -274,6 +278,7 @@ try {
         assert.deepEqual(portableRequests, []);
         await portable.close();
         networkAvailable = true;
+        if (publicUrl) await context.setOffline(false);
         assert.deepEqual(errors, []);
         assert.deepEqual([...external], []);
         results.push({
@@ -287,6 +292,7 @@ try {
           sourcePngSha256: digest(png),
           readingSha256: digest(html),
           offlineReadingIdentical: true,
+          offlineMode,
           embeddedSourcePages: embedded,
           axeLightViolations: light.violations.length,
           axeDarkViolations: dark.violations.length,
@@ -295,7 +301,7 @@ try {
         });
         await context.close();
         console.log(
-          `${name} ${width}: words, accent/order, source, downloads, portable reading and real-origin outage passed.`,
+          `${name} ${width}: words, accent/order, source, downloads, portable reading and ${offlineMode} passed.`,
         );
       }
     } finally {

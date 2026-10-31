@@ -1,4 +1,11 @@
 import { words } from "../words.ts";
+import {
+  type AssumedOrder,
+  type Evidence,
+  type InferenceState,
+  initialInference,
+  type Proposal,
+} from "./inference.ts";
 import type { Accent, Conditions, Order, Outcome, Rule } from "./model.ts";
 import { INITIAL_RULE, predictDental } from "./model.ts";
 
@@ -17,6 +24,7 @@ export interface Notebook {
   accent: Accent;
   order: Order;
   conditions: Conditions;
+  inference: InferenceState;
   citations: string[];
   note: string;
 }
@@ -32,6 +40,7 @@ export function initialNotebook(): Notebook {
     accent: 0,
     order: "sounds-first",
     conditions: { initial: false, voicedNeighbors: true, precedingAccented: false },
+    inference: initialInference(),
     citations: [],
     note: "",
   };
@@ -54,6 +63,40 @@ function wordId(value: unknown): string {
   if (typeof value !== "string" || !words.some((item) => item.id === value))
     throw new Error("The notebook names a word outside this edition.");
   return value;
+}
+
+function evidence(value: unknown): Evidence {
+  const item = object(value);
+  if (item.dorsal !== "?" && item.dorsal !== "h" && item.dorsal !== "g")
+    throw new Error("The first evidence consonant must be ?, h, or g.");
+  if (item.sibilant !== "?" && item.sibilant !== "s" && item.sibilant !== "z")
+    throw new Error("The second evidence consonant must be ?, s, or z.");
+  if (item.dental !== "?" && item.dental !== "þ" && item.dental !== "d")
+    throw new Error("The third evidence consonant must be ?, þ, or d.");
+  return { dorsal: item.dorsal, sibilant: item.sibilant, dental: item.dental };
+}
+function assumedOrder(value: unknown): AssumedOrder {
+  if (value !== "sounds-first" && value !== "accent-first" && value !== "unknown")
+    throw new Error("Unknown order assumption in the accent account.");
+  return value;
+}
+function proposal(value: unknown): Proposal {
+  const item = object(value);
+  if (![0, 1, 2, 3].includes(item.accent as number))
+    throw new Error("An accent proposal must name one of the four positions.");
+  return {
+    evidence: evidence(item.evidence),
+    order: assumedOrder(item.order),
+    accent: item.accent as Accent,
+  };
+}
+function inference(value: unknown): InferenceState {
+  if (value === undefined) return initialInference();
+  const item = object(value);
+  return {
+    ...proposal(item),
+    submitted: item.submitted === null ? null : proposal(item.submitted),
+  };
 }
 
 export const READING_IDS = [
@@ -126,6 +169,7 @@ export function parseNotebook(value: unknown): Notebook {
       voicedNeighbors: conditions.voicedNeighbors,
       precedingAccented: conditions.precedingAccented,
     },
+    inference: inference(item.inference),
     citations: [...item.citations],
     note: item.note,
   };

@@ -24,6 +24,10 @@ try {
   await page.locator("#reveal-all").click();
   await page.locator('[data-accent="2"]').click();
   await page.locator("#preceding").check();
+  await page.locator("#evidence-order").selectOption("unknown");
+  await page.locator("#copy-evidence").click();
+  await page.locator("#proposed-accent").selectOption("2");
+  await page.locator("#check-accent").click();
   for (const id of ["rule", "test", "exception"]) {
     await page.locator(`[data-reading="${id}"]`).click();
     await page.locator("#cite-reading").check();
@@ -31,13 +35,14 @@ try {
   await page
     .locator("#explanation")
     .fill(
-      "My first prediction gave þ for ‘under’; Gothic undar has d. Changing the unaccented case to d explains that row and the starting pair. The comparison ántara- / anþar beside antár / undar is useful because a similar n-t sequence accompanies two accent positions.\n\nThe rule agrees with six of these eight selected observations. Sanskrit katará- still predicts d where Gothic hvaþar has þ. Greek πότερος has a different accent; Sanskrit is evidence, not an unchanged copy of the ancestral language. The compound member -fadi- also needs a compound-accent account before I can treat páti- as its exact accent comparison. I have not proved such an account.\n\nIn Verner’s fictional word, the third accent protects θ while the other medial fricatives voice. Moving accent to the first syllable afterwards preserves that contrast; moving it before voicing loses the contrast. This is an experiment on the explanation, not an independent historical date. The saved environment test also shows why an accented predecessor blocks voicing.",
+      "My first prediction gave þ for ‘under’; Gothic undar has d. Changing the unaccented case to d explains that row and the starting pair. The comparison ántara- / anþar beside antár / undar is useful because a similar n-t sequence accompanies two accent positions.\n\nThe rule agrees with six of these eight selected observations. Sanskrit katará- still predicts d where Gothic hvaþar has þ. Greek πότερος has a different accent; Sanskrit is evidence, not an unchanged copy of the ancestral language. The compound member -fadi- also needs a compound-accent account before I can treat páti- as its exact accent comparison. I have not proved such an account.\n\nIn Verner’s fictional word, the third accent protects θ while the other medial fricatives voice. Moving accent to the first syllable afterwards preserves that contrast; moving it before voicing loses the contrast. This is an experiment on the explanation, not an independent historical date. The saved environment test also shows why an accented predecessor blocks voicing.\n\nWorking backwards, I kept g / z / þ and allowed either event order. Only the third old accent fits. By contrast h / z / d would permit every old accent when the order is unknown: fixing the accent early erases the distinction before voicing. This inverse result concerns the fictional word, not a recovered lexical accent.",
     );
   for (const [id, name] of [
     ["json", "akzent-notebook.json"],
     ["csv", "akzent-comparisons.csv"],
     ["svg", "akzent-experiment.svg"],
     ["html", "akzent-reading.html"],
+    ["evidence-csv", "akzent-accent-account.csv"],
   ]) {
     const pending = page.waitForEvent("download");
     await page.locator(`#save-${id}`).click();
@@ -62,8 +67,9 @@ try {
   assert.equal(data.trials.length, 3);
   assert.equal(data.trials[0].prediction, "þ");
   assert.equal(data.trials[1].prediction, "d");
+  assert.equal(data.inference.submitted.accent, 2);
   console.log(
-    "Exported a three-prediction notebook, comparison CSV, experiment SVG, standalone reading and printed PDF through the actual workshop.",
+    "Exported a three-prediction notebook with a checked inverse account, both CSVs, experiment SVG, standalone reading and printed PDF through the actual workshop.",
   );
 } finally {
   await browser.close();

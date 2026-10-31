@@ -1,9 +1,9 @@
 {
   "name": "@antonsoloviev/akzent",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Test an accent rule on Verner\u2019s word comparisons, then move the accent through his invented word.",
+  "description": "Test Verner’s accent rule, keep resistant comparisons, and infer which old accents a fictional output permits.",
   "author": "Anthony Mercer <anthony@praviel.com>",
   "license": "MIT",
   "repository": {
@@ -35,7 +35,10 @@
     "test:browser": "node scripts/browser.mjs",
     "check": "npm run lint && npm run typecheck && npm test && npm run verify:sources && npm run build",
     "test:audit": "node scripts/audit.mjs",
-    "example": "node scripts/example.mjs"
+    "example": "node scripts/example.mjs",
+    "test:drafts": "node scripts/drafts-browser.mjs",
+    "test:inference": "node scripts/inference-browser.mjs",
+    "verify:pages": "node scripts/verify-pages.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

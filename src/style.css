@@ -70,6 +70,98 @@
 * {
   box-sizing: border-box;
 }
+[hidden] {
+  display: none !important;
+}
+.draft-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+.draft-notice {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 6px;
+}
+.draft-notice p:last-child {
+  margin-bottom: 0;
+}
+.recovery {
+  margin: 20px 0;
+  max-width: 100%;
+}
+.recovery select {
+  margin: 8px 0 14px;
+}
+.inference-bench {
+  border-top: 1px solid var(--line);
+  margin-top: 34px;
+  padding-top: 34px;
+}
+.inference-bench .section-intro h3 {
+  font-size: 32px;
+}
+.evidence-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 20px 0;
+}
+.evidence-controls label,
+.inference-bench > label,
+.proposal-controls label {
+  font-size: 15px;
+}
+.inference-bench select {
+  margin-top: 8px;
+}
+.inference-bench > label {
+  display: block;
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+.inference-summary {
+  color: var(--teal);
+  font-weight: 600;
+  margin: 22px 0;
+}
+.evidence-line {
+  margin-top: 18px;
+}
+.checked-proposal {
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  margin: 26px 0;
+}
+.checked-proposal h4 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+.proposal-controls {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.proposal-controls label {
+  min-width: 200px;
+}
+@media (max-width: 650px) {
+  .evidence-controls {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .proposal-controls > * {
+    width: 100%;
+  }
+  .inference-bench table {
+    min-width: 650px;
+  }
+}
 html {
   scroll-padding-top: 24px;
 }

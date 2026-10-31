@@ -1,8 +1,15 @@
 import { asset, dataUrl, verifiedBytes } from "./assets.ts";
+import { type AssumedOrder, type Evidence, inferAccents } from "./core/inference.ts";
 import { predictDental, voiceFricative } from "./core/model.ts";
 import { type Notebook, snapshot } from "./core/record.ts";
 import { escapeHtml as e } from "./html.ts";
-import { experimentMarkup, experimentSvg, ledgerMarkup, ruleDescription } from "./presentation.ts";
+import {
+  experimentMarkup,
+  experimentSvg,
+  inferenceMarkup,
+  ledgerMarkup,
+  ruleDescription,
+} from "./presentation.ts";
 import { readings } from "./readings.ts";
 import { form, word } from "./words.ts";
 
@@ -61,6 +68,49 @@ export function comparisonCsv(state: Notebook): string {
   return `\uFEFF${rows.map((row) => row.map((value) => `"${String(value).replaceAll('"', '""')}"`).join(",")).join("\r\n")}\r\n`;
 }
 
+export function inferenceCsv(state: Notebook): string {
+  const rows: (string | number)[][] = [
+    [
+      "account",
+      "first_evidence",
+      "second_evidence",
+      "third_evidence",
+      "order_assumption",
+      "candidate_older_accent",
+      "candidate_order",
+      "hypothetical_output",
+      "fits",
+      "conflicts",
+      "proposed_older_accent",
+    ],
+  ];
+  const append = (kind: string, evidence: Evidence, order: AssumedOrder, accent: number) => {
+    for (const item of inferAccents(evidence, order))
+      rows.push([
+        kind,
+        evidence.dorsal,
+        evidence.sibilant,
+        evidence.dental,
+        order,
+        item.accent + 1,
+        item.order,
+        item.endpoint,
+        String(item.fits),
+        item.conflicts.join(" "),
+        accent + 1,
+      ]);
+  };
+  append(
+    "current-evidence",
+    state.inference.evidence,
+    state.inference.order,
+    state.inference.accent,
+  );
+  const saved = state.inference.submitted;
+  if (saved) append("checked-proposal", saved.evidence, saved.order, saved.accent);
+  return `\uFEFF${rows.map((row) => row.map((value) => `"${String(value).replaceAll('"', '""')}"`).join(",")).join("\r\n")}\r\n`;
+}
+
 export async function notebookHtml(input: Notebook): Promise<string> {
   // Capture before the first asset request. Editing the live page cannot change this export.
   const state = snapshot(input);
@@ -100,6 +150,7 @@ export async function notebookHtml(input: Notebook): Promise<string> {
 <section><h2>My explanation</h2><p class="notes">${e(state.note || "No explanation entered.")}</p><p>Cited readings: ${state.citations.length ? state.citations.map((id) => e(readings.find((entry) => entry.id === id)?.title ?? id)).join("; ") : "none selected"}.</p></section>
 <section><h2>Verner's invented word</h2><p>All forms in this experiment are hypothetical. An asterisk indicates an unattested form; it does not make this particular invented word a reconstruction of an actual lexical item. The stages below isolate consonants and accent, not the entire development of Gothic.</p>${experimentSvg(state.accent, state.order)}${experimentMarkup(state.accent, state.order)}<p>The displayed event order is an instructional intervention on Verner's explanation. A real language cannot be rerun, and this experiment is not independent evidence dating the historical changes.</p></section>
 <section><h2>German readings with new English</h2><p>Selected excerpts are normalized, not diplomatic transcriptions. þ replaces the historical dental type; an ellipsis in the fictional-word excerpt omits his phonetic notation. Sanskrit forms elsewhere use modern IAST.</p>${readings.map((entry) => `<article id="${entry.id}"><h3>${e(entry.title)} / p. ${entry.page}${state.citations.includes(entry.id) ? " / cited" : ""}</h3><blockquote><p lang="de">${e(entry.german)}</p><p>${e(entry.english)}</p></blockquote><dl>${entry.notes.map((note) => `<dt>${e(note.phrase)}</dt><dd>${e(note.gloss)}</dd>`).join("")}</dl></article>`).join("")}</section>
+<section><h2>Inferring the older accent</h2><p>This is an inverse experiment on the fictional word. Question marks withhold a consonant; a fitting scenario is not necessarily uniquely identified.</p>${inferenceMarkup(state.inference)}</section>
 <section><h2>The saved environment test</h2><p>Word-initial: ${state.conditions.initial ? "yes" : "no"}; voiced neighbors: ${state.conditions.voicedNeighbors ? "yes" : "no"}; immediately preceding syllable accented: ${state.conditions.precedingAccented ? "yes" : "no"}.</p><p>θ becomes ${voiceFricative(state.conditions).voiced ? "ð" : "θ"}. ${e(voiceFricative(state.conditions).reason)}</p></section>
 <section><h2>What this evidence can support</h2><p>This is a deliberately small, selected comparison set, not a representative sample or a proof of a sound law. The resistant rows are retained. Sanskrit accent may have its own history; analogy, compounds, inflection, and other changes need separate evidence. This is a study of language histories, not ancestry or identity of peoples.</p><p>The underlying sequence begins with an assumed inherited dental; it does not derive Gothic from Sanskrit or Latin. Later English developments are outside the model. No recorded pronunciation or ancient acoustic reconstruction is supplied.</p></section>
 <section><h2>Complete source pages</h2><p>Karl Verner, <cite lang="de">Eine ausnahme der ersten lautverschiebung</cite>, <cite>Zeitschrift für vergleichende Sprachforschung</cite> 23 (1877), pp. 97–130. Signed Copenhagen, July 1875. <a href="https://archive.org/details/india.history.resource.77512">Original volume</a>; <a href="https://lrc.la.utexas.edu/books/reader/11-k-verner">1967 translation for comparison</a> (not reproduced here).</p>${images.map(({ page, file, url }) => `<figure class="source"><img class="source-page" src="${url}" alt="Complete scanned page ${page} of Verner's article"><figcaption class="source-caption">Printed p. ${page}; PDF page ${page + 6}. SHA-256: ${file.sha256}. Complete grayscale rendering; public domain.</figcaption></figure>`).join("")}</section>

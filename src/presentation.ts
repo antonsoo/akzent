@@ -1,3 +1,9 @@
+import {
+  checkProposal,
+  type InferenceState,
+  inferAccents,
+  inferenceSummary,
+} from "./core/inference.ts";
 import type { Accent, Order, Rule } from "./core/model.ts";
 import { experiment, predictDental } from "./core/model.ts";
 import type { Notebook } from "./core/record.ts";
@@ -96,4 +102,26 @@ export function ledgerMarkup(state: Notebook): string {
       return `<tr><th scope="row">${e(item.meaning)}</th><td lang="sa-Latn">${e(form(item.sanskrit))}</td><td>${prediction}</td><td lang="got-Latn">${e(form(item.gothic))}</td><td>${agrees ? "Agrees" : "Resists"}</td></tr>`;
     })
     .join("")}</tbody></table></div>`;
+}
+
+export const orderLabel = (order: string): string =>
+  order === "sounds-first"
+    ? "Voicing under the old accent first"
+    : order === "accent-first"
+      ? "First-syllable accent fixed first"
+      : "Either event order allowed";
+
+export function inferenceMarkup(state: InferenceState): string {
+  const { evidence, order, submitted } = state;
+  return `<p class="evidence-line">Consonant evidence: <strong>${e(evidence.dorsal)} / ${e(evidence.sibilant)} / ${e(evidence.dental)}</strong>. ${e(orderLabel(order))}.</p><p class="inference-summary">${e(inferenceSummary(evidence, order))}</p><div class="table-scroll" tabindex="0" role="region" aria-label="All accent and event-order scenarios; arrow keys scroll the table"><table><caption>Every scenario allowed by the order assumption</caption><thead><tr><th scope="col">Older accent</th><th scope="col">Order</th><th scope="col">Hypothetical output</th><th scope="col">Account</th></tr></thead><tbody>${inferAccents(
+    evidence,
+    order,
+  )
+    .map(
+      (item) =>
+        `<tr><th scope="row">Position ${item.accent + 1}</th><td>${e(orderLabel(item.order))}</td><td class="word">${e(item.endpoint)}</td><td>${item.fits ? "Fits the selected consonants" : e(item.conflicts.join(" "))}</td></tr>`,
+    )
+    .join(
+      "",
+    )}</tbody></table></div><div class="checked-proposal"><h4>Last checked proposal</h4>${submitted ? `<p>Position ${submitted.accent + 1}; evidence ${e(submitted.evidence.dorsal)} / ${e(submitted.evidence.sibilant)} / ${e(submitted.evidence.dental)}; ${e(orderLabel(submitted.order))}.</p><p>${e(checkProposal(submitted))}</p><p class="small">This check keeps its own evidence and order assumption when the controls change.</p>` : "<p>No proposal checked yet. Choose an older accent position and test it against the selected evidence.</p>"}</div>`;
 }
