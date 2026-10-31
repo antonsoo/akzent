@@ -186,6 +186,7 @@ try {
         assert.equal(record.trials.length, 2);
         assert.deepEqual(record.citations, ["exception"]);
         assert.equal(record.accent, 2);
+        assert.equal(record.conditions.precedingAccented, true);
         assert.equal(record.trials[1].prediction, "d");
         const csv = await saveDownload(page, "#save-csv", join(folder, "akzent-comparisons.csv"));
         assert.equal(csv.toString().split("\r\n").length, 12);
@@ -218,6 +219,7 @@ try {
         networkAvailable = false;
         await page.reload({ waitUntil: "domcontentloaded" });
         await textContains(page, "#offline-status", "available offline");
+        assert.equal(await page.locator("#preceding").isChecked(), true);
         assert.equal(await page.locator("#explanation").inputValue(), note);
         await page.locator('[data-reading="fiction"]').click();
         await textContains(page, "#source-status", "Page 114 checked");

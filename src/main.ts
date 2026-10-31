@@ -137,11 +137,7 @@ function renderExperiment(): void {
 }
 
 function renderConditions(): void {
-  const result = voiceFricative({
-    initial: required<HTMLInputElement>("#initial").checked,
-    voicedNeighbors: required<HTMLInputElement>("#neighbors").checked,
-    precedingAccented: required<HTMLInputElement>("#preceding").checked,
-  });
+  const result = voiceFricative(state.conditions);
   required("#condition-result").innerHTML =
     `<strong>θ becomes ${result.voiced ? "ð / voiced" : "θ / stays voiceless"}</strong><span>${e(result.reason)}</span>`;
 }
@@ -227,6 +223,9 @@ function syncControls(): void {
   accentedSelect.value = state.rule.accented;
   unaccentedSelect.value = state.rule.unaccented;
   explanation.value = state.note;
+  required<HTMLInputElement>("#initial").checked = state.conditions.initial;
+  required<HTMLInputElement>("#neighbors").checked = state.conditions.voicedNeighbors;
+  required<HTMLInputElement>("#preceding").checked = state.conditions.precedingAccented;
   for (const radio of document.querySelectorAll<HTMLInputElement>('input[name="order"]'))
     radio.checked = radio.value === state.order;
 }
@@ -288,7 +287,15 @@ for (const radio of document.querySelectorAll<HTMLInputElement>('input[name="ord
     save();
   });
 for (const id of ["initial", "neighbors", "preceding"])
-  required(`#${id}`).addEventListener("change", renderConditions);
+  required(`#${id}`).addEventListener("change", () => {
+    state.conditions = {
+      initial: required<HTMLInputElement>("#initial").checked,
+      voicedNeighbors: required<HTMLInputElement>("#neighbors").checked,
+      precedingAccented: required<HTMLInputElement>("#preceding").checked,
+    };
+    renderConditions();
+    save();
+  });
 for (const button of document.querySelectorAll<HTMLButtonElement>("[data-reading]"))
   button.addEventListener("click", () => renderReading(button.dataset.reading ?? "rule"));
 required("#read-exception").addEventListener("click", () => {
@@ -372,6 +379,7 @@ required<HTMLInputElement>("#open-notebook").addEventListener("change", async ()
     renderLedger();
     renderExperiment();
     renderCitations();
+    renderConditions();
     save();
     required("#trial-status").textContent = "";
     required("#export-status").textContent =

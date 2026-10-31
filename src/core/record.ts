@@ -1,5 +1,5 @@
 import { words } from "../words.ts";
-import type { Accent, Order, Outcome, Rule } from "./model.ts";
+import type { Accent, Conditions, Order, Outcome, Rule } from "./model.ts";
 import { INITIAL_RULE, predictDental } from "./model.ts";
 
 export interface Trial {
@@ -16,6 +16,7 @@ export interface Notebook {
   trials: Trial[];
   accent: Accent;
   order: Order;
+  conditions: Conditions;
   citations: string[];
   note: string;
 }
@@ -30,6 +31,7 @@ export function initialNotebook(): Notebook {
     trials: [],
     accent: 0,
     order: "sounds-first",
+    conditions: { initial: false, voicedNeighbors: true, precedingAccented: false },
     citations: [],
     note: "",
   };
@@ -66,6 +68,14 @@ export function parseNotebook(value: unknown): Notebook {
   const item = object(value);
   if (item.schema !== "akzent-notebook" || item.version !== 1)
     throw new Error("Choose an Akzent version-1 notebook JSON file.");
+  const conditions =
+    item.conditions === undefined ? initialNotebook().conditions : object(item.conditions);
+  if (
+    typeof conditions.initial !== "boolean" ||
+    typeof conditions.voicedNeighbors !== "boolean" ||
+    typeof conditions.precedingAccented !== "boolean"
+  )
+    throw new Error("The environment test requires three yes/no conditions.");
   if (!Array.isArray(item.revealed) || item.revealed.length > words.length)
     throw new Error("The revealed-word list is invalid.");
   const revealed = item.revealed.map(wordId);
@@ -111,6 +121,11 @@ export function parseNotebook(value: unknown): Notebook {
     trials,
     accent: item.accent as Accent,
     order: item.order,
+    conditions: {
+      initial: conditions.initial,
+      voicedNeighbors: conditions.voicedNeighbors,
+      precedingAccented: conditions.precedingAccented,
+    },
     citations: [...item.citations],
     note: item.note,
   };
