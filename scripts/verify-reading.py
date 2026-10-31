@@ -24,7 +24,7 @@ embedded = {}
 for mime, text in re.findall(r"data:([^;,]+);base64,([A-Za-z0-9+/=]+)", markup):
     data = base64.b64decode(text, validate=True)
     embedded[sha(data)] = {"mime": mime, "bytes": len(data)}
-expected = [f"sources/verner-{page}.png" for page in [114, 115, 117, 118, 119, 130]]
+expected = [f"sources/verner-{page}.png" for page in [98, 114, 115, 117, 118, 119, 130]]
 expected += ["fonts/gentium.ttf", "fonts/hanken-latin.woff2"]
 identities = []
 for name in expected:
@@ -48,8 +48,8 @@ pixels = []
 with tempfile.TemporaryDirectory(prefix="akzent-reading-") as folder:
     subprocess.run(["pdfimages", "-png", str(pdf), str(Path(folder) / "page")], check=True)
     extracted = sorted(Path(folder).glob("page-*.png"))
-    assert len(extracted) == 6
-    for page, path in zip([114, 115, 117, 118, 119, 130], extracted):
+    assert len(extracted) == 7
+    for page, path in zip([98, 114, 115, 117, 118, 119, 130], extracted):
         left = Image.open(path).convert("RGB")
         right = Image.open(root / "public/sources" / f"verner-{page}.png").convert("RGB")
         assert left.size == right.size
@@ -61,4 +61,4 @@ for phrase in ["Inferring the older accent", "Only older accent position 3", "SI
 files = {path.name: {"bytes": path.stat().st_size, "sha256": sha(path.read_bytes())} for path in sorted(sample.iterdir()) if path.is_file()}
 report = {"files": files, "portableNotebookMatchesEditableJson": True, "embeddedAssets": identities, "fontLicenseTextsEmbeddedExactly": True, "pdfPages": int(re.search(r"Pages:\s+(\d+)", receipts["pdf-info"])[1]), "pdfUsedFontsEmbedded": True, "pdfSourcePixels": pixels, "boundary": "Byte identities in standalone HTML; decoded RGB equality in the browser-produced PDF. No PDF/UA or independent philological-review claim."}
 (output / "artifacts.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
-print(f"Verified {len(identities)} embedded assets, both full font licenses, notebook equality and all six decoded source images in the {report['pdfPages']}-page PDF.")
+print(f"Verified {len(identities)} embedded assets, both full font licenses, notebook equality and all seven decoded source images in the {report['pdfPages']}-page PDF.")

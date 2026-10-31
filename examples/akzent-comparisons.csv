@@ -6,7 +6,7 @@
 "current-rule","hundred","hundred","śatám","hund","false","voiceless","voiced","d","d","true","117"
 "current-rule","there","there","tátra","þaþro","true","voiceless","voiced","þ","þ","true","119"
 "current-rule","which","which of two","katará-","hvaþar","false","voiceless","voiced","d","þ","false","99;119"
-"current-rule","lord","lord / husband (in a compound)","páti-","-fadi-","true","voiceless","voiced","þ","d","false","99;119"
+"current-rule","lord","lord / husband (in a compound)","páti-","-fadi-","true","voiceless","voiced","þ","d","false","98;119"
 "fixed-prediction","under","under / within","antár","undar","false","voiceless","voiceless","þ","d","false","118"
 "fixed-prediction","under","under / within","antár","undar","false","voiceless","voiced","d","d","true","118"
 "fixed-prediction","which","which of two","katará-","hvaþar","false","voiceless","voiced","d","þ","false","99;119"

@@ -31,6 +31,10 @@ test("the source concordance preserves agreements and both resistant comparisons
     which: [false, "þ", "d"],
     lord: [true, "d", "þ"],
   };
+  // Fresh reading of primary PDF p. 104 (= printed 98), bottom paragraph:
+  // fadi- and bruþ-fadi-. Printed 99 instead contains the early katará- entry.
+  assert.deepEqual(word("lord").pages, [98, 119]);
+  assert.deepEqual(word("which").pages, [99, 119]);
   assert.equal(words.length, Object.keys(source).length);
   for (const [id, [accented, observed, predicted]] of Object.entries(source)) {
     const entry = word(id);

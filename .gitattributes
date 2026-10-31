@@ -1,0 +1,2 @@
+# Keep actual RFC 4180 browser downloads byte-identical in source receipts.
+*.csv -text whitespace=cr-at-eol

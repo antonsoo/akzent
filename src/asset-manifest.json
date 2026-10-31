@@ -38,13 +38,13 @@
   {
     "path": "sources/NOTICE.txt",
     "bytes": 1206,
-    "sha256": "d71f2a36d500c90b0643360785e90775f85bda97d56ebb8efe8858d4667f921a",
+    "sha256": "5b14e6014e92b5b5532b73d7429f4f9eccc3dcd31a69b313b97909e1f9d597ef",
     "mime": "text/plain"
   },
   {
     "path": "sources/provenance.json",
-    "bytes": 2825,
-    "sha256": "bf490a3e50a301cd8f1c6c770a7d7f7d5f3ed1c008c9659e3fa3fd8e396c54a4",
+    "bytes": 3019,
+    "sha256": "1ae2cf56da5dbe2cabc8a0e2a68c2b270e7db3c3f99cbbb28adcbcba852f40fc",
     "mime": "application/json"
   },
   {
@@ -105,6 +105,12 @@
     "path": "sources/verner-97.png",
     "bytes": 130587,
     "sha256": "1a70f9257eb9e07555deff3319abf26574039347f91d9f45a81779d5ef24d104",
+    "mime": "image/png"
+  },
+  {
+    "path": "sources/verner-98.png",
+    "bytes": 182921,
+    "sha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
     "mime": "image/png"
   },
   {

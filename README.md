@@ -76,7 +76,7 @@ _Zeitschrift für vergleichende Sprachforschung_ 23 (1877), pp. 97–130.
 The article is signed Copenhagen, July 1875; bibliographies use varying
 publication dates. This edition identifies it by the volume's date and pages.
 
-Eleven complete page images are retained. Six short German readings have
+Twelve complete page images are retained. Six short German readings have
 new English translations and contextual phrase notes. The viewer verifies
 each image's byte length and SHA-256 before displaying it. At full size,
 its actual pixels are available in a keyboard-pannable viewport.
@@ -99,7 +99,7 @@ See the [source concordance](docs/model-and-sources.md),
 | Download           | Contents                                                                                                                                                    |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Editable JSON      | Rule, selected/revealed words, fixed predictions, citations, explanation, accent, event order, environment, draft and checked inverse account; reopens here |
-| Illustrated HTML   | The same notebook, all investigations, readings, six complete source pages, embedded fonts and licenses; opens offline and prints through the browser       |
+| Illustrated HTML   | The same notebook, all investigations, readings, seven complete source pages, embedded fonts and licenses; opens offline and prints through the browser     |
 | CSV                | Separate current-rule and fixed-prediction rows, with observations, source pages, and agreement                                                             |
 | Accent-account CSV | Every allowed scenario for the current evidence and the last checked proposal, as separate records                                                          |
 | SVG                | The current fictional input, event order, intermediate stage and endpoint                                                                                   |

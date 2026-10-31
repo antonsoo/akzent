@@ -21,7 +21,7 @@ It does not reconstruct the correct older accent independently.
 | Hundred        | śatám            | hund           | Unaccented         | d                       | d           | 117           |
 | There          | tátra            | þaþro          | Accented           | þ                       | þ           | 119           |
 | Which of two   | katará-          | hvaþar         | Unaccented         | d                       | þ           | 99, 119       |
-| Lord / husband | páti-            | -fadi-         | Accented           | þ                       | d           | 99, 119       |
+| Lord / husband | páti-            | -fadi-         | Accented           | þ                       | d           | 98, 119       |
 
 For _there_, test the **second** dental. The first is word-initial, outside
 medial voicing. _Hundred_ uses citation forms beside Verner's śatá-/hunda-;
@@ -132,3 +132,17 @@ edge 2600px, without cropping or retouching.
 `npm run verify:sources` checks inventory, byte length, and SHA-256.
 The source, translated excerpts, Gothic spellings, and symbolic reconstructions
 remain separately inspectable claims.
+
+## Primary-page audit and citation correction
+
+A new download of the original 30,161,319-byte PDF matches the declared
+SHA-256. Fresh complete-page Poppler renders match every retained PNG byte
+for byte and every decoded RGB pixel. See the [render receipt](audit/primary-page-renders.json).
+
+This reading found an early citation error: the Gothic compound example
+_brūþ-fadi-_ and Sanskrit _páti-_ are on printed **98**, not 99. The later
+resistant comparison remains on **119**. Page 98 is now retained and selectable;
+the word card and CSV source references use **98, 119**. The portable reading
+now embeds the complete p. 98 alongside the other six selected pages. The _katará-_
+comparison correctly remains on **99, 119**. Normalizations and predictions are
+unchanged. The volume title page prints 1877; p. 130 signs July 1875.

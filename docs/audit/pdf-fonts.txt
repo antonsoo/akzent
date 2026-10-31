@@ -7,4 +7,4 @@ BAAAAA+GentiumPlus                   CID TrueType      Identity-H       yes yes 
 DAAAAA+HankenGrotesk-Regular         Type 3            Custom           yes yes yes     10  0
 EAAAAA+LiberationSans                CID TrueType      Identity-H       yes yes yes     11  0
 BAAAAA+GentiumPlus                   Type 3            Custom           yes yes yes     19  0
-FAAAAA+DejaVuSansMono                CID TrueType      Identity-H       yes yes yes     49  0
+FAAAAA+DejaVuSansMono                CID TrueType      Identity-H       yes yes yes     52  0

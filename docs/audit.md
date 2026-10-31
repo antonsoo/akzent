@@ -59,7 +59,7 @@ localStorage. See [Web Locks](https://www.w3.org/TR/web-locks/) and
 
 | Boundary                                                                                          | Receipt                                                                                                   |
 | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Four forward endpoints and eight lexical observations                                             | [Page-level concordance](model-and-sources.md), [19 retained-file identities](../src/asset-manifest.json) |
+| Four forward endpoints and eight lexical observations                                             | [Page-level concordance](model-and-sources.md), [20 retained-file identities](../src/asset-manifest.json) |
 | Every one of 81 partial-evidence/order combinations                                               | [Independent literal-table checks](../tests/inference.test.ts)                                            |
 | Local forward workflow, two browsers at 1440/375px; actual origin refuses connections             | [Local browser receipt](audit/browser-local.json)                                                         |
 | Local inverse workflow, fixed proposal, actual artifacts, offline reopening, both themes          | [Inverse receipt](audit/inference-local.json)                                                             |
@@ -75,8 +75,8 @@ offline completeness or publication identity.
 The [current sample reading](../examples/akzent-reading.html) contains the
 learner's failed first prediction, revised rule, resistant comparison and
 checked inverse account. Its [printed PDF](../examples/akzent-reading.pdf) has
-**22 A4 pages**. All eight embedded image/font assets match their retained bytes;
-both font licenses are included exactly. Six source images extracted from the
+**23 A4 pages**. All nine embedded image/font assets match their retained bytes;
+both font licenses are included exactly. Seven source images extracted from the
 PDF match the original dimensions and every decoded RGB pixel. Poppler reports
 all used fonts embedded and no PDF JavaScript. This is not PDF/UA certification.
 
@@ -108,3 +108,22 @@ The application is a selected comparative-language worksheet and a modern
 intervention on Verner's fictional argument. Neither the inverse model nor
 the six agreements in eight selected rows establishes a general historical
 law, an acoustic reconstruction or a genetic-ancestry claim.
+
+## Independent primary-volume check
+
+A fresh download of the original volume, its SHA-256 and full fresh page
+renders were checked separately from the application’s own manifest. All
+**12** current retained PNGs match fresh complete-page renders byte for byte
+and in every decoded RGB pixel. The [receipt](audit/primary-page-renders.json)
+records the PDF identity, Poppler version, page mapping and dimensions.
+
+Manual reading found that the early _-fadi-_ example was cited one page late.
+It is on p. **98**, while the later mismatch is on p. **119**. The current
+word card and CSV correct that reference; the portable HTML and viewer now offer
+the complete p. 98. The previously recorded 0.2 build/browser receipts above
+belong to the pre-erratum 24-file edition; follow-up receipts distinguish the
+corrected 25-file edition. No learner prediction is rewritten by the citation fix.
+
+Reproduce the independent render comparison with Poppler and Pillow:
+`python3 scripts/verify-source-pages.py PATH_TO_77512.pdf`. The script requires
+the downloaded PDF to match the declared identity before rendering.

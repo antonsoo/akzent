@@ -1,8 +1,8 @@
 Title:           Akzent / a comparison notebook
 Creator:         Chromium
 Producer:        Skia/PDF m153
-CreationDate:    Fri Oct 30 18:40:51 2026 PDT
-ModDate:         Fri Oct 30 18:40:51 2026 PDT
+CreationDate:    Fri Oct 30 19:04:20 2026 PDT
+ModDate:         Fri Oct 30 19:04:20 2026 PDT
 Custom Metadata: no
 Metadata Stream: no
 Tagged:          yes
@@ -10,10 +10,10 @@ UserProperties:  no
 Suspects:        no
 Form:            none
 JavaScript:      no
-Pages:           22
+Pages:           23
 Encrypted:       no
 Page size:       595.92 x 842.88 pts (A4)
 Page rot:        0
-File size:       1397473 bytes
+File size:       1589468 bytes
 Optimized:       no
 PDF version:     1.4

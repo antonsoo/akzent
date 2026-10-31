@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 — 2026-10-30
+
+- Correct the early compound _-fadi-_ citation from printed page 99 to 98;
+  retain the complete page and correct the ledger, CSV and illustrated reading.
+  The portable reading now embeds seven complete source pages.
+- Compare a fresh primary-PDF download and fresh complete-page renders with all
+  twelve retained images, independently of the application's own manifest.
+- Preserve static-branch history and older hashed assets during future updates.
+
 ## 0.2.0 — 2026-10-30
 
 - Infer possible older accents from partial fictional consonant evidence, with

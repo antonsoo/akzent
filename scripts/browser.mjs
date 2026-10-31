@@ -121,6 +121,16 @@ try {
           await page.locator("#ledger tbody tr").filter({ hasText: "Resists" }).count(),
           2,
         );
+        await page.locator('[data-word="lord"]').click();
+        await textContains(page, "#word-details", "pp. 98, 119");
+        await page.locator("#source-page").selectOption("98");
+        await textContains(page, "#source-status", "Page 98 checked");
+        const earlySource = await saveDownload(page, "#save-source", join(folder, "verner-98.png"));
+        assert.equal(
+          digest(earlySource),
+          files.find((file) => file.path === "sources/verner-98.png").sha256,
+        );
+        await page.locator('[data-word="which"]').click();
 
         const endpoints = [];
         for (const accent of [0, 1, 2, 3]) {
@@ -244,7 +254,7 @@ try {
         });
         await portable.goto(pathToFileURL(join(folder, "akzent-reading.html")).href);
         await portable.evaluate(() => document.fonts.ready);
-        assert.equal(await portable.locator(".source-page").count(), 6);
+        assert.equal(await portable.locator(".source-page").count(), 7);
         const embedded = await portable.locator(".source-page").evaluateAll(async (images) => {
           const results = [];
           for (const img of images) {
@@ -289,6 +299,8 @@ try {
           revealedComparisons: 8,
           fixedPredictions: 2,
           resistantComparisons: 2,
+          earlyCompoundSourcePage: 98,
+          earlyCompoundSourceSha256: digest(earlySource),
           sourcePngSha256: digest(png),
           readingSha256: digest(html),
           offlineReadingIdentical: true,

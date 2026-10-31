@@ -118,7 +118,7 @@ export const words: readonly Word[] = [
     gothic: ["-fa", "d", "i-"],
     precedingAccented: true,
     group: "resistant",
-    pages: [99, 119],
+    pages: [98, 119],
     note: "Gothic -fadi- occurs as the last member of a compound, for example brūþ-fadi- ‘bridegroom’. Comparing it with the independently accented Sanskrit páti- predicts þ, whereas the cited compound member has d. Compound accent is a relevant issue; these rows alone do not settle its history.",
     comparison: {
       language: "Greek",
