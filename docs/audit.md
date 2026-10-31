@@ -61,11 +61,11 @@ localStorage. See [Web Locks](https://www.w3.org/TR/web-locks/) and
 | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | Four forward endpoints and eight lexical observations                                             | [Page-level concordance](model-and-sources.md), [20 retained-file identities](../src/asset-manifest.json) |
 | Every one of 81 partial-evidence/order combinations                                               | [Independent literal-table checks](../tests/inference.test.ts)                                            |
-| Local forward workflow, two browsers at 1440/375px; actual origin refuses connections             | [Local browser receipt](audit/browser-local.json)                                                         |
+| Local forward workflow, two browsers at 1440/375px; actual origin refuses connections             | [Local browser receipt](audit/browser-021-local.json)                                                     |
 | Local inverse workflow, fixed proposal, actual artifacts, offline reopening, both themes          | [Inverse receipt](audit/inference-local.json)                                                             |
-| Late source, fixed export snapshot, same-length corruption refusal, two-tab cache loss and repair | [Source/offline receipt](audit/source-and-offline.json)                                                   |
+| Late source, fixed export snapshot, same-length corruption refusal, two-tab cache loss and repair | [Source/offline receipt](audit/source-offline-021.json)                                                   |
 | Sample JSON, both CSVs, SVG, HTML and PDF; exact embedded asset bytes and printed source pixels   | [Artifact receipt](audit/artifacts.json)                                                                  |
-| Clean Node 24 install/check/build and full output equality                                        | [Clean-build receipt](audit/clean-build.json)                                                             |
+| Clean Node 24 install/check/build and full output equality                                        | [Clean-build receipt](audit/clean-build-021.json)                                                         |
 
 The local forward driver refuses actual origin connections while
 `navigator.onLine` remains true. Public runs use browser network-offline mode;
@@ -127,3 +127,9 @@ corrected 25-file edition. No learner prediction is rewritten by the citation fi
 Reproduce the independent render comparison with Poppler and Pillow:
 `python3 scripts/verify-source-pages.py PATH_TO_77512.pdf`. The script requires
 the downloaded PDF to match the declared identity before rendering.
+
+The [public update receipt](audit/update-021.json) starts with the real older
+0.2 edition in Chromium and Firefox at 1440/375px. After the corrected edition
+is published and independently verified, three old tabs remain coherent under
+the waiting worker. Closing the last old tab allows activation; the newer
+edition keeps the explanation and opens/downloads the corrected p. 98 offline.

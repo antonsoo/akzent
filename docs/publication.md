@@ -1,4 +1,26 @@
-# Published Akzent 0.2
+# Published Akzent: edition receipts
+
+## Citation correction: 0.2.1
+
+The current public edition corrects the early _-fadi-_ page reference from 99
+to 98 and makes that complete page available in both the viewer and portable
+reading. The later p. 119 resistant comparison and the predictions are unchanged.
+
+| Boundary                 | Result                                                                                                                                    | Receipt                                                      |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Original source identity | New 30,161,319-byte download matches the PDF identity; all 12 fresh complete-page renders are byte/pixel identical to retained PNGs       | [Primary-volume comparison](audit/primary-page-renders.json) |
+| Clean build              | Fresh Node 24 clone at `fbbaaa7`; install/check/build pass; all 25 output files match the working build                                   | [Corrected clean inventory](audit/clean-build-021.json)      |
+| Static deployment        | `f6115a9` is a normal descendant of the earlier static branch; old hashed assets remain                                                   | Actual branch history; no force push                         |
+| Public files             | Canonical entry/index and all 25 expected files match the clean build after browser work                                                  | [Current hosted bytes](audit/hosted-021-after-browser.json)  |
+| Public operation         | Both browsers at both widths; corrected citation, actual p. 98 download, seven embedded source pages, same reading offline                | [Current browser receipt](audit/browser-021-public.json)     |
+| Old to new edition       | Three old tabs stay coherent while the update waits; after the last closes, the new edition retains the argument and serves p. 98 offline | [Live update receipt](audit/update-021.json)                 |
+| Portable sample          | Actual 23-page PDF; nine embedded font/image assets and seven extracted source images match                                               | [Current artifact inspection](audit/artifacts.json)          |
+
+The 0.2 receipts below are retained as the earlier publication record. Current
+source synchronization is checked separately after the audit documentation is
+committed. No remote-CI success is inferred from local or hosted verification.
+
+## Initial 0.2 publication
 
 The [source repository](https://github.com/antonsoo/akzent) and
 [live workshop](https://antonsoo.github.io/akzent/) are public. This report keeps
