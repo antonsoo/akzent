@@ -2,6 +2,8 @@
 
 **Make a sound rule. Risk a prediction. Keep the word that resists it.**
 
+[Live workshop](https://antonsoo.github.io/akzent/) · [Audit and reproducible investigations](docs/audit.md)
+
 [![MIT license](https://img.shields.io/badge/license-MIT-634087)](LICENSE)
 
 ![Gothic fadar and brōþar aligned with their differently accented Sanskrit comparisons](docs/assets/workshop-desktop.png)
@@ -15,9 +17,10 @@ another word, inspect the disagreements, and read the original argument.
 The second investigation reworks Verner's explicitly invented **\*akasatam**.
 Move one accent through four syllables and watch three consonants respond.
 Then move the accent _before_ the voicing test: the four outcomes collapse.
+Work backwards from incomplete consonant evidence. A compatible accent may
+be unique, ambiguous, or impossible under the stated assumptions.
 
-This is a local, unpublished edition. The intended repository and Pages paths
-are declared in the package metadata; this README makes no hosted-availability claim.
+![The inverse investigation shows every allowed scenario and why it fits or conflicts](docs/assets/inference-desktop.png)
 
 ## Try it
 
@@ -35,7 +38,11 @@ Open **http://127.0.0.1:4392/akzent/**. For a first investigation:
 3. Try **which of two** with the same rule. Keep the mismatch; inspect p. 119.
 4. Move the accent to the third syllable of the invented word, then switch
    the event order. Explain what information was lost.
-5. Cite a reading, write an explanation, and save an illustrated reading.
+5. At “Can the consonants give the accent back?”, choose **h / z / d**.
+   Compare the conventional order with **Allow either order**. How many older
+   accents fit? Try **g / z / þ**, then **h / s / ?**.
+6. Check an accent proposal, cite a reading, write an explanation, and save an
+   illustrated reading. Changing evidence keeps the checked proposal intact.
 
 The production command is **`npm run build`**, producing **`dist/`** with
 base **`/akzent/`**. Run `npm run preview` for
@@ -51,6 +58,8 @@ installed offline edition cannot conceal edits.
 | Resistant evidence | Inspect katará- / hvaþar and páti- / -fadi-                    | Two disagreements remain in the simple comparison                 |
 | An invented word   | Move the older accent through *akasatam                        | Four endpoints transcribed from Verner's p. 115                   |
 | Event order        | Fix initial accent before or after voicing                     | An early move erases the older contrast before voicing can use it |
+| Inverse accent     | Withhold consonants and choose an event-order assumption       | All allowed scenarios, with a reason for each conflict            |
+| Checked proposal   | Submit one older accent, then change the evidence              | The earlier account keeps its own evidence and assumptions        |
 | Environment        | Change initial position, voiced neighbors, or preceding accent | Accent alone does not license voicing                             |
 | Close reading      | Select German phrases and cite the readings                    | Contextual English notes and references in the notebook           |
 
@@ -87,18 +96,24 @@ See the [source concordance](docs/model-and-sources.md),
 
 ## A notebook that leaves the page
 
-| Download         | Contents                                                                                                                                               |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Editable JSON    | Rule, selected/revealed words, fixed predictions, citations, explanation, accent, event order, environment; reopens here                               |
-| Illustrated HTML | The same notebook, both investigations, readings, six complete source pages, embedded fonts and licenses; opens offline and prints through the browser |
-| CSV              | Separate current-rule and fixed-prediction rows, with observations, source pages, and agreement                                                        |
-| SVG              | The current fictional input, event order, intermediate stage and endpoint                                                                              |
-| Source PNG       | The selected complete page, verified against the retained identity                                                                                     |
+| Download           | Contents                                                                                                                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Editable JSON      | Rule, selected/revealed words, fixed predictions, citations, explanation, accent, event order, environment, draft and checked inverse account; reopens here |
+| Illustrated HTML   | The same notebook, all investigations, readings, six complete source pages, embedded fonts and licenses; opens offline and prints through the browser       |
+| CSV                | Separate current-rule and fixed-prediction rows, with observations, source pages, and agreement                                                             |
+| Accent-account CSV | Every allowed scenario for the current evidence and the last checked proposal, as separate records                                                          |
+| SVG                | The current fictional input, event order, intermediate stage and endpoint                                                                                   |
+| Source PNG         | The selected complete page, verified against the retained identity                                                                                          |
 
 Exports capture the notebook when the button is pressed. Changing the page
 while assets load cannot revise the saved argument. Invalid JSON imports
 leave current work in place. Learner text is escaped in the standalone HTML.
-Browser retention can be cleared; save JSON for a separate editable copy.
+Each tab retains its own working copy. A conflicting browser save exposes
+explicit choices and keeps recoveries; it does not silently replace the other
+tab’s argument. Opening a notebook or starting a new one keeps the previous
+notebook for undo. Edits made during a delayed import remain until the learner
+chooses to open the file. Unreadable browser formats remain recoverable as raw
+JSON. Browser retention can be cleared; save JSON for a separate editable copy.
 
 [Actual sample reading](examples/akzent-reading.html) ·
 [Printed PDF](examples/akzent-reading.pdf) ·
@@ -115,6 +130,13 @@ old accent -> fricatives -> conditioned voicing -> later accent -> spelling
                             ^
                   try moving the accent earlier
 ```
+
+`src/core/inference.ts` enumerates every allowed accent/order scenario rather
+than treating the first fit as a recovered historical accent. Its 81 combinations
+of partial evidence and order assumptions are checked against a separate literal
+transcription of the printed outcomes. `src/persistence.ts` keeps per-tab state,
+serializes shared writes with Web Locks where available, and retains divergent
+recoveries.
 
 `src/core/model.ts` isolates the prediction, voicing conditions, and fictional
 transformation. `src/words.ts` keeps observations separate from predictions.
@@ -140,13 +162,21 @@ Playwright Chromium and Firefox browsers already installed:
 
 ```sh
 npm run test:browser
+# With npm run preview running in another terminal:
+npm run test:inference
+npm run test:drafts
+npm run test:audit
 ```
 
 The driver operates both browsers at desktop and 375px: keyboard actions,
 rule changes, accent positions/event orders, source-image identity, actual
 downloads, JSON reopening, standalone HTML, both themes, accessibility,
 and reload/export while the real origin refuses connections. Evidence goes
-under `test-results/browser/`. See the [local review](docs/review.md).
+under `test-results/browser/`. The focused drivers reproduce ambiguous and
+impossible inverse accounts, cross-tab recovery, delayed imports, corrupt source
+refusal, and offline loss/repair. See the [current audit](docs/audit.md), including
+the separate local, hosted-file, public-browser, and source-publication receipts.
+The [initial 0.1 review](docs/review.md) is retained as history.
 
 The model tests one dental correspondence, not every change affecting a word.
 Sanskrit accent is comparative evidence; Sanskrit is not Gothic's parent.

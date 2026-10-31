@@ -1,0 +1,115 @@
+{
+  "files": {
+    "akzent-accent-account.csv": {
+      "bytes": 2639,
+      "sha256": "528b51bea52ba29fefc6fdf461ad03a90c8ae59298fa98b6f4e144a62f246735"
+    },
+    "akzent-comparisons.csv": {
+      "bytes": 1394,
+      "sha256": "ea9082ae5eaba5552889efbc515279c6285d1bf6d507337b0ab89f10402db498"
+    },
+    "akzent-experiment.svg": {
+      "bytes": 1253,
+      "sha256": "ebf714a8a650d2e235c4c090918e6f90e734f7caf5903625c96a4540c7f906b7"
+    },
+    "akzent-notebook.json": {
+      "bytes": 2665,
+      "sha256": "2a247f66a215ac413f018d8882965048e9a786d966e32ad2d39a2aed9d10470e"
+    },
+    "akzent-reading.html": {
+      "bytes": 2554495,
+      "sha256": "5c658ec533e47d62c426ac94ace3338e219c38513ec7e2db291b72708c27a751"
+    },
+    "akzent-reading.pdf": {
+      "bytes": 1397473,
+      "sha256": "3c6d7fa78dee135f7a37d559b60b3e79e12e6f2f998c19e2f6dc7ca30bbc4ab0"
+    }
+  },
+  "portableNotebookMatchesEditableJson": true,
+  "embeddedAssets": [
+    {
+      "path": "sources/verner-114.png",
+      "bytes": 165386,
+      "sha256": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "sources/verner-115.png",
+      "bytes": 180996,
+      "sha256": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "sources/verner-117.png",
+      "bytes": 184997,
+      "sha256": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "sources/verner-118.png",
+      "bytes": 175954,
+      "sha256": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "sources/verner-119.png",
+      "bytes": 163958,
+      "sha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "sources/verner-130.png",
+      "bytes": 156240,
+      "sha256": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "fonts/gentium.ttf",
+      "bytes": 822956,
+      "sha256": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+      "embeddedBytesIdentical": true
+    },
+    {
+      "path": "fonts/hanken-latin.woff2",
+      "bytes": 34704,
+      "sha256": "e9201eddf1d41d0b62253295d869ce3cf65768f7102b797f02c7f8c876b4a9d5",
+      "embeddedBytesIdentical": true
+    }
+  ],
+  "fontLicenseTextsEmbeddedExactly": true,
+  "pdfPages": 22,
+  "pdfUsedFontsEmbedded": true,
+  "pdfSourcePixels": [
+    {
+      "sourcePage": 114,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 115,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 117,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 118,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 119,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 130,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    }
+  ],
+  "boundary": "Byte identities in standalone HTML; decoded RGB equality in the browser-produced PDF. No PDF/UA or independent philological-review claim."
+}

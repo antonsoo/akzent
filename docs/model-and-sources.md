@@ -78,6 +78,32 @@ control demonstrates information loss within the schematic explanation.
 It does not establish absolute dates or resolve the relative chronology
 of every phase of Grimm's and Verner's laws.
 
+## Inverse constraints on the fictional word
+
+The inverse bench is a modern teaching exercise, not another quotation or a
+claim that Verner reconstructed a word's accent this way. It enumerates the four
+accent positions under each allowed event order. A question mark supplies no
+constraint; each known consonant must equal its scenario's printed endpoint.
+The account lists every mismatch, and distinguishes a fitting proposal from a
+uniquely determined accent.
+
+| Evidence  | Allowed order               | Possible old accents |
+| --------- | --------------------------- | -------------------- |
+| h / z / d | Voicing before accent moves | 1                    |
+| h / z / d | Either order                | 1, 2, 3, 4           |
+| g / z / þ | Either order                | 3                    |
+| h / s / ? | Either order                | None                 |
+
+The second row includes the four accent-first scenarios: fixing initial accent
+before voicing discards the old accent before it can condition the consonants.
+The last row asks for two protected consonants after distinct vowels, which
+this one-accent model cannot supply. Neither result is a universal statement
+about possible words or accent systems. All candidate forms remain fictional.
+
+The checked proposal stores its own evidence, order assumption and accent.
+Changing the current controls does not revise that earlier account. The CSV
+and standalone reading preserve this distinction.
+
 ## Reading-to-page mapping
 
 | Reading                   | Page    | Evidence                                                         |

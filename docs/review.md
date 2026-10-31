@@ -1,4 +1,9 @@
-# Local edition review — 2026-10-30
+# Initial 0.1 local review — 2026-10-30
+
+**Historical record:** this review describes the edition at `43bbba6`.
+The current examples have since been regenerated for 0.2. See the
+[current audit](audit.md) for recovery fixes, inverse learning and publication
+evidence. The receipts in `review/` belong to that earlier local edition.
 
 Akzent is a completed local workshop, with an editable notebook and portable
 reading. It has not been pushed or hosted. The source, local build, browser

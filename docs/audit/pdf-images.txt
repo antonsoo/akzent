@@ -1,0 +1,8 @@
+page   num  type   width height color comp bpc  enc interp  object ID x-ppi y-ppi size ratio
+--------------------------------------------------------------------------------------------
+   9     0 image    1579  2600  icc     3   8  image  no        30  0   307   307  167K 1.4%
+  10     1 image    1579  2600  icc     3   8  image  no        34  0   307   307  181K 1.5%
+  11     2 image    1579  2600  icc     3   8  image  no        37  0   307   307  188K 1.6%
+  12     3 image    1579  2600  icc     3   8  image  no        40  0   307   307  177K 1.5%
+  13     4 image    1579  2600  icc     3   8  image  no        43  0   307   307  161K 1.3%
+  14     5 image    1579  2600  icc     3   8  image  no        46  0   307   307  160K 1.3%

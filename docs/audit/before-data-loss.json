@@ -1,0 +1,19 @@
+{
+  "source": "43bbba6",
+  "results": [
+    {
+      "browser": "chromium",
+      "firstTabAfterOtherTabSaveAndReload": "Second tab: a different argument.",
+      "firstTabWorkLost": true,
+      "noteAfterDelayedImport": "The imported note.",
+      "postImportStartEditLost": true
+    },
+    {
+      "browser": "firefox",
+      "firstTabAfterOtherTabSaveAndReload": "Second tab: a different argument.",
+      "firstTabWorkLost": true,
+      "noteAfterDelayedImport": "The imported note.",
+      "postImportStartEditLost": true
+    }
+  ]
+}
