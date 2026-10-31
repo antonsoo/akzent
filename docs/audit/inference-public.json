@@ -1,0 +1,65 @@
+{
+  "url": "https://antonsoo.github.io/akzent/",
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1440,
+      "uniquePartialEvidence": true,
+      "ambiguousAcrossOrders": true,
+      "impossibleEvidence": true,
+      "checkedProposalFixed": true,
+      "csvScenarios": 16,
+      "jsonReopened": true,
+      "portableReading": true,
+      "offlineRestored": true,
+      "axeLight": 0,
+      "axeDark": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "uniquePartialEvidence": true,
+      "ambiguousAcrossOrders": true,
+      "impossibleEvidence": true,
+      "checkedProposalFixed": true,
+      "csvScenarios": 16,
+      "jsonReopened": true,
+      "portableReading": true,
+      "offlineRestored": true,
+      "axeLight": 0,
+      "axeDark": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "firefox",
+      "width": 1440,
+      "uniquePartialEvidence": true,
+      "ambiguousAcrossOrders": true,
+      "impossibleEvidence": true,
+      "checkedProposalFixed": true,
+      "csvScenarios": 16,
+      "jsonReopened": true,
+      "portableReading": true,
+      "offlineRestored": true,
+      "axeLight": 0,
+      "axeDark": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "firefox",
+      "width": 375,
+      "uniquePartialEvidence": true,
+      "ambiguousAcrossOrders": true,
+      "impossibleEvidence": true,
+      "checkedProposalFixed": true,
+      "csvScenarios": 16,
+      "jsonReopened": true,
+      "portableReading": true,
+      "offlineRestored": true,
+      "axeLight": 0,
+      "axeDark": 0,
+      "pageErrors": []
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "checkedAtUtc": "2026-10-31T01:47:46.003106+00:00",
+  "pages": {
+    "html_url": "https://antonsoo.github.io/akzent/",
+    "status": "built",
+    "build_type": "legacy",
+    "source": {
+      "branch": "gh-pages",
+      "path": "/"
+    }
+  },
+  "runs": [
+    {
+      "id": 41156799192,
+      "name": "Pages",
+      "head": "521887ae0d74d29ed57a1d373eaa3ca243362c48",
+      "conclusion": "failure",
+      "url": "https://github.com/antonsoo/akzent/actions/runs/41156799192",
+      "jobs": [
+        {
+          "name": "deploy",
+          "conclusion": "failure",
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": 41156799003,
+      "name": "Check",
+      "head": "521887ae0d74d29ed57a1d373eaa3ca243362c48",
+      "conclusion": "failure",
+      "url": "https://github.com/antonsoo/akzent/actions/runs/41156799003",
+      "jobs": [
+        {
+          "name": "check",
+          "conclusion": "failure",
+          "steps": []
+        }
+      ]
+    },
+    {
+      "id": 41156795208,
+      "name": "pages build and deployment",
+      "head": "b03d90f498344a4e2f82837aeb51bd94d2dd69a8",
+      "conclusion": "success",
+      "url": "https://github.com/antonsoo/akzent/actions/runs/41156795208",
+      "jobs": [
+        {
+          "name": "build",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Checkout",
+              "conclusion": "success"
+            },
+            {
+              "name": "Upload artifact",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Checkout",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "name": "report-build-status",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Report Build Status",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "name": "deploy",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Deploy to GitHub Pages",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "boundary": "Legacy static deployment succeeded; source Check/Pages jobs with zero steps are failures, not evidence that their checks ran."
+}
