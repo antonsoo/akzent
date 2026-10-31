@@ -1,0 +1,58 @@
+{
+  "schema": "akzent-notebook",
+  "version": 1,
+  "rule": {
+    "accented": "voiceless",
+    "unaccented": "voiced"
+  },
+  "selected": "which",
+  "revealed": [
+    "father",
+    "brother",
+    "other",
+    "under",
+    "hundred",
+    "there",
+    "which",
+    "lord"
+  ],
+  "trials": [
+    {
+      "word": "under",
+      "rule": {
+        "accented": "voiceless",
+        "unaccented": "voiceless"
+      },
+      "prediction": "þ"
+    },
+    {
+      "word": "under",
+      "rule": {
+        "accented": "voiceless",
+        "unaccented": "voiced"
+      },
+      "prediction": "d"
+    },
+    {
+      "word": "which",
+      "rule": {
+        "accented": "voiceless",
+        "unaccented": "voiced"
+      },
+      "prediction": "d"
+    }
+  ],
+  "accent": 2,
+  "order": "sounds-first",
+  "conditions": {
+    "initial": false,
+    "voicedNeighbors": true,
+    "precedingAccented": true
+  },
+  "citations": [
+    "rule",
+    "test",
+    "exception"
+  ],
+  "note": "My first prediction gave þ for ‘under’; Gothic undar has d. Changing the unaccented case to d explains that row and the starting pair. The comparison ántara- / anþar beside antár / undar is useful because a similar n-t sequence accompanies two accent positions.\n\nThe rule agrees with six of these eight selected observations. Sanskrit katará- still predicts d where Gothic hvaþar has þ. Greek πότερος has a different accent; Sanskrit is evidence, not an unchanged copy of the ancestral language. The compound member -fadi- also needs a compound-accent account before I can treat páti- as its exact accent comparison. I have not proved such an account.\n\nIn Verner’s fictional word, the third accent protects θ while the other medial fricatives voice. Moving accent to the first syllable afterwards preserves that contrast; moving it before voicing loses the contrast. This is an experiment on the explanation, not an independent historical date. The saved environment test also shows why an accented predecessor blocks voicing."
+}

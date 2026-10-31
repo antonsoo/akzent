@@ -1,0 +1,57 @@
+{
+  "files": {
+    "akzent-comparisons.csv": {
+      "bytes": 1394,
+      "sha256": "ea9082ae5eaba5552889efbc515279c6285d1bf6d507337b0ab89f10402db498"
+    },
+    "akzent-experiment.svg": {
+      "bytes": 1253,
+      "sha256": "ebf714a8a650d2e235c4c090918e6f90e734f7caf5903625c96a4540c7f906b7"
+    },
+    "akzent-notebook.json": {
+      "bytes": 2016,
+      "sha256": "a187adcc8794c4e89885fae36728c44ac29bed31f1b5fd9a5542b7a52b142b05"
+    },
+    "akzent-reading.html": {
+      "bytes": 2549942,
+      "sha256": "81beed9daa1dc25c5de77ad33aa9562646ab3608a09eba2e52041e3ffce2bdb8"
+    },
+    "akzent-reading.pdf": {
+      "bytes": 1366713,
+      "sha256": "8a8966b5bda01c0f28ed290055960b12beb6c02e3e2b05edd0828e8031ca2def"
+    }
+  },
+  "pdfSourcePixels": [
+    {
+      "sourcePage": 114,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 115,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 117,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 118,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 119,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    },
+    {
+      "sourcePage": 130,
+      "size": [1579, 2600],
+      "pdfPixelsIdentical": true
+    }
+  ],
+  "pdfTextChecked": true
+}
