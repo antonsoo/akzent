@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Test Verner’s accent rule, keep resistant comparisons, and infer which old accents a fictional output permits.",
   "author": "Anthony Mercer <anthony@praviel.com>",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antonsoo/akzent.git"

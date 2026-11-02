@@ -4,7 +4,7 @@
 
 [Live workshop](https://antonsoo.github.io/akzent/) · [Audit and reproducible investigations](docs/audit.md)
 
-[![MIT license](https://img.shields.io/badge/license-MIT-634087)](LICENSE)
+[![PolyForm Noncommercial license](https://img.shields.io/badge/license-PolyForm%20Noncommercial-634087)](LICENSE)
 
 ![Gothic fadar and brōþar aligned with their differently accented Sanskrit comparisons](docs/assets/workshop-desktop.png)
 
@@ -191,7 +191,9 @@ experiment. Language relationships do not establish genetic ancestry or identity
 
 ## Contributing and license
 
+New versions are released under the [PolyForm Noncommercial License 1.0.0](LICENSE). It is free for any noncommercial purpose, including personal study, teaching and research, and for use by charities, schools, universities, research organizations and government institutions. Commercial use needs written permission from Anthony Mercer (anthony@praviel.com). Versions up to commit [`a5fd8d2`](https://github.com/antonsoo/akzent/tree/a5fd8d2) (2026-11-01) were released under the MIT License, and copies of those versions keep it.
+
 Word, accent, and reading changes need page-level evidence; see
 [Contributing](CONTRIBUTING.md). Code, drawings, and new translations are
-[MIT](LICENSE). Historical pages are public domain. Gentium Plus and Hanken
+[PolyForm Noncommercial 1.0.0](LICENSE). Historical pages are public domain. Gentium Plus and Hanken
 Grotesk retain their SIL Open Font Licenses in `public/fonts/`.
