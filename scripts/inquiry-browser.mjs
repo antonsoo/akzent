@@ -321,7 +321,7 @@ for (const [name, engine] of [
           pageErrors: errors,
         });
         console.log(
-          `${name} ${width}: inquiry, conditional branches, fixed proposal, source, CSV/JSON/HTML, themes, accessibility and stopped-origin operation passed.`,
+          `${name} ${width}: inquiry, conditional branches, fixed proposal, source, CSV/JSON/HTML, themes, accessibility and ${publicURL ? "browser-network-offline" : "stopped-origin"} operation passed.`,
         );
       } finally {
         await context.close();

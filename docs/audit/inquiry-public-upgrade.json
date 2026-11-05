@@ -1,0 +1,59 @@
+{
+  "checkedAtUtc": "2026-11-05T22:03:06.399Z",
+  "url": "https://antonsoo.github.io/akzent/",
+  "publicationCue": "explicit marker after independent canonical-byte verification",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "oldEdition": "1e634d1ac9eafe4a38bb",
+      "newEdition": "defdee8d2ed16c9a8ef2",
+      "waitingUpdateKeptThreeOldTabsCoherent": true,
+      "oldReloadStillComplete": true,
+      "activationAfterLastOldTabClosed": true,
+      "notebookSurvived": true,
+      "newPrimaryPageAvailableOffline": true,
+      "newPrimaryPageSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "oldEdition": "1e634d1ac9eafe4a38bb",
+      "newEdition": "defdee8d2ed16c9a8ef2",
+      "waitingUpdateKeptThreeOldTabsCoherent": true,
+      "oldReloadStillComplete": true,
+      "activationAfterLastOldTabClosed": true,
+      "notebookSurvived": true,
+      "newPrimaryPageAvailableOffline": true,
+      "newPrimaryPageSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "oldEdition": "1e634d1ac9eafe4a38bb",
+      "newEdition": "defdee8d2ed16c9a8ef2",
+      "waitingUpdateKeptThreeOldTabsCoherent": true,
+      "oldReloadStillComplete": true,
+      "activationAfterLastOldTabClosed": true,
+      "notebookSurvived": true,
+      "newPrimaryPageAvailableOffline": true,
+      "newPrimaryPageSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "oldEdition": "1e634d1ac9eafe4a38bb",
+      "newEdition": "defdee8d2ed16c9a8ef2",
+      "waitingUpdateKeptThreeOldTabsCoherent": true,
+      "oldReloadStillComplete": true,
+      "activationAfterLastOldTabClosed": true,
+      "notebookSurvived": true,
+      "newPrimaryPageAvailableOffline": true,
+      "newPrimaryPageSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+    }
+  ]
+}

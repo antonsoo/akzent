@@ -109,6 +109,24 @@ failure, or assistive technology.
 
 ## Publication boundary
 
-The reviewed source and complete static build are prepared for publication.
-Hosted-byte identity, old-tab upgrade behavior and public discovery remain
-separate checks; their receipts will be recorded here after delivery.
+The [public inquiry](https://antonsoo.github.io/akzent/#inquiry) serves edition
+`defdee8d2ed16c9a8ef2`, built from the audited source at
+[`820a659`](https://github.com/antonsoo/akzent/tree/820a659ae09391a69db26fd022a3e4dc3d39cd32).
+The static publication commit is `90dc813`; it preserves the three existing
+hashed assets and adds the new files without rewriting publication history.
+
+| Boundary                                              | Recorded evidence                                                                                                                                                                            |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Canonical root, explicit index, all 25 reviewed files | [Before-browser comparison](audit/inquiry-hosted-before.json), [after-browser comparison](audit/inquiry-hosted-after.json); every byte matches                                               |
+| Public inquiry, Chromium/Firefox at 1440/375px        | [Public browser receipt](audit/inquiry-audited-public.json); both goals, branches, undo, fixed proposal, native downloads, source reader and browser-network-offline operation               |
+| Old public edition to new edition                     | [Upgrade receipt](audit/inquiry-public-upgrade.json); three old tabs remain coherent while the new worker waits, closing the last old tab allows activation, and the saved argument survives |
+| Retained older hashed assets                          | [Preservation receipt](audit/inquiry-preserved-assets.json); old entry documents can still request their assets                                                                              |
+
+The upgrade begins at the actual older public edition, not a local substitute.
+Its new source-page check uses the existing complete p. 98; that page was not
+changed by this audit. The separate local transfer driver stops actual origins
+and streams real slow bodies. Public offline checks instead disable the browser
+network; neither result is represented as the other.
+
+No registry release or remote CI success is claimed. The package remains private.
+Build with `npm run build`, serving `dist/` at base `/akzent/`.

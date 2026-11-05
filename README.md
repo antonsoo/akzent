@@ -24,7 +24,8 @@ be unique, ambiguous, or impossible under the stated assumptions.
 
 ## Which consonant would you read next?
 
-The local edition adds an inquiry to the existing invented-word workshop.
+The [next-reading inquiry](https://antonsoo.github.io/akzent/#inquiry) extends
+the existing invented-word workshop.
 Withhold consonants, compare the explanations each possible reading would
 leave, then try a branch. With either event order allowed, the first consonant
 splits eight scenarios into five versus three. The other consonants split them
@@ -40,7 +41,7 @@ your last inquiry change in this visit.
 
 ![Possible readings of the first consonant retain different named explanations](docs/assets/inquiry-desktop.png)
 
-Choose **Next reading** in the local app. Save exact reading-plan CSV, editable
+Choose **Next reading** in the app. Save exact reading-plan CSV, editable
 JSON or an illustrated reading with seven complete source pages. The reading
 now also embeds native JSON and CSV downloads; it can recover editable work
 without a connection or scripts. Its route and output groups expand for print.
@@ -49,8 +50,8 @@ without a connection or scripts. Its route and output groups expand for print.
 [Adversarial audit and transfer corrections](docs/inquiry-audit.md) ·
 [Actual downloaded plan](examples/inquiry/reading-plan.csv) ·
 [Illustrated PDF](examples/inquiry/reading-plan.pdf).
-The audit distinguishes local verification from public delivery; see its
-publication record for the reviewed edition.
+The [publication record](docs/inquiry-audit.md#publication-boundary) separates
+the clean build, canonical hosted bytes, public operation and old-tab upgrades.
 
 ## Try it
 

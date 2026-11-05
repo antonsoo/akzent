@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "node": "v26.7.0",
+  "requestTimeoutMs": 10000,
+  "retryWindowMs": 0,
+  "pollIntervalMs": 5000,
+  "concurrency": 6,
+  "baseURL": "https://antonsoo.github.io/akzent/",
+  "state": "verified",
+  "attempts": 1,
+  "startedAtUtc": "2026-11-05T22:03:27.483Z",
+  "checkedAtUtc": "2026-11-05T22:03:28.436Z",
+  "buildManifestSha256": "0a4cda493eea873087e0070ca7b3208e7396d8e31e409d43f5046fe1606e30ad",
+  "expectedFileCount": 25,
+  "checkedFileCount": 25,
+  "verifiedFileCount": 25,
+  "rootBefore": {
+    "path": "index.html",
+    "bytes": 1052,
+    "sha256": "3c32c284d8a05653e04350ac2dea4d0c2b1135e1bc050441e6600930f5c9d877",
+    "url": "https://antonsoo.github.io/akzent/",
+    "httpStatus": 200,
+    "observedBytes": 1052,
+    "observedSha256": "3c32c284d8a05653e04350ac2dea4d0c2b1135e1bc050441e6600930f5c9d877",
+    "state": "verified"
+  },
+  "rootAfter": {
+    "path": "index.html",
+    "bytes": 1052,
+    "sha256": "3c32c284d8a05653e04350ac2dea4d0c2b1135e1bc050441e6600930f5c9d877",
+    "url": "https://antonsoo.github.io/akzent/",
+    "httpStatus": 200,
+    "observedBytes": 1052,
+    "observedSha256": "3c32c284d8a05653e04350ac2dea4d0c2b1135e1bc050441e6600930f5c9d877",
+    "state": "verified"
+  },
+  "files": [
+    {
+      "path": "assets/index-D8rXo6FG.css",
+      "bytes": 18473,
+      "sha256": "6b74a1b9eca62e5ce818425c2c00a905815f03462b1923986c97d62dd3ad7d3e",
+      "url": "https://antonsoo.github.io/akzent/assets/index-D8rXo6FG.css",
+      "httpStatus": 200,
+      "observedBytes": 18473,
+      "observedSha256": "6b74a1b9eca62e5ce818425c2c00a905815f03462b1923986c97d62dd3ad7d3e",
+      "state": "verified"
+    },
+    {
+      "path": "assets/index-DOFEzBcK.js",
+      "bytes": 86801,
+      "sha256": "bfc5f221129d592dbf181dd7b014d0714f45bae0e6a5b5d5dd17d9d075da02c2",
+      "url": "https://antonsoo.github.io/akzent/assets/index-DOFEzBcK.js",
+      "httpStatus": 200,
+      "observedBytes": 86801,
+      "observedSha256": "bfc5f221129d592dbf181dd7b014d0714f45bae0e6a5b5d5dd17d9d075da02c2",
+      "state": "verified"
+    },
+    {
+      "path": "fonts/gentium-OFL.txt",
+      "bytes": 4507,
+      "sha256": "c309a440be606e283ccacc746662d714b9c5b5a7a0a10dd2514b90206b55ddfe",
+      "url": "https://antonsoo.github.io/akzent/fonts/gentium-OFL.txt",
+      "httpStatus": 200,
+      "observedBytes": 4507,
+      "observedSha256": "c309a440be606e283ccacc746662d714b9c5b5a7a0a10dd2514b90206b55ddfe",
+      "state": "verified"
+    },
+    {
+      "path": "fonts/gentium.ttf",
+      "bytes": 822956,
+      "sha256": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+      "url": "https://antonsoo.github.io/akzent/fonts/gentium.ttf",
+      "httpStatus": 200,
+      "observedBytes": 822956,
+      "observedSha256": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+      "state": "verified"
+    },
+    {
+      "path": "fonts/hanken-OFL.txt",
+      "bytes": 9377,
+      "sha256": "26ff01d30304ca6dc862c560bc80cd145c7f9ede745b4bc801f0207f1438e417",
+      "url": "https://antonsoo.github.io/akzent/fonts/hanken-OFL.txt",
+      "httpStatus": 200,
+      "observedBytes": 9377,
+      "observedSha256": "26ff01d30304ca6dc862c560bc80cd145c7f9ede745b4bc801f0207f1438e417",
+      "state": "verified"
+    },
+    {
+      "path": "fonts/hanken-latin-ext.woff2",
+      "bytes": 19588,
+      "sha256": "768af2923e0ab1549f1dfba0a5c8ea749c4c01f01d8e77ffaf7fcd12f57a0a24",
+      "url": "https://antonsoo.github.io/akzent/fonts/hanken-latin-ext.woff2",
+      "httpStatus": 200,
+      "observedBytes": 19588,
+      "observedSha256": "768af2923e0ab1549f1dfba0a5c8ea749c4c01f01d8e77ffaf7fcd12f57a0a24",
+      "state": "verified"
+    },
+    {
+      "path": "fonts/hanken-latin.woff2",
+      "bytes": 34704,
+      "sha256": "e9201eddf1d41d0b62253295d869ce3cf65768f7102b797f02c7f8c876b4a9d5",
+      "url": "https://antonsoo.github.io/akzent/fonts/hanken-latin.woff2",
+      "httpStatus": 200,
+      "observedBytes": 34704,
+      "observedSha256": "e9201eddf1d41d0b62253295d869ce3cf65768f7102b797f02c7f8c876b4a9d5",
+      "state": "verified"
+    },
+    {
+      "path": "fonts/provenance.json",
+      "bytes": 1347,
+      "sha256": "44e5299dc60cf15a478faa483e9915e2f6ceb68325f0805deb3b12d41144f00c",
+      "url": "https://antonsoo.github.io/akzent/fonts/provenance.json",
+      "httpStatus": 200,
+      "observedBytes": 1347,
+      "observedSha256": "44e5299dc60cf15a478faa483e9915e2f6ceb68325f0805deb3b12d41144f00c",
+      "state": "verified"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 282,
+      "sha256": "45d0dc4ce5bb94003e9a534b34c10073493bcb361ec9c2656f6a70c36233a92f",
+      "url": "https://antonsoo.github.io/akzent/icon.svg",
+      "httpStatus": 200,
+      "observedBytes": 282,
+      "observedSha256": "45d0dc4ce5bb94003e9a534b34c10073493bcb361ec9c2656f6a70c36233a92f",
+      "state": "verified"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1052,
+      "sha256": "3c32c284d8a05653e04350ac2dea4d0c2b1135e1bc050441e6600930f5c9d877",
+      "url": "https://antonsoo.github.io/akzent/index.html",
+      "httpStatus": 200,
+      "observedBytes": 1052,
+      "observedSha256": "3c32c284d8a05653e04350ac2dea4d0c2b1135e1bc050441e6600930f5c9d877",
+      "state": "verified"
+    },
+    {
+      "path": "sources/NOTICE.txt",
+      "bytes": 1206,
+      "sha256": "5b14e6014e92b5b5532b73d7429f4f9eccc3dcd31a69b313b97909e1f9d597ef",
+      "url": "https://antonsoo.github.io/akzent/sources/NOTICE.txt",
+      "httpStatus": 200,
+      "observedBytes": 1206,
+      "observedSha256": "5b14e6014e92b5b5532b73d7429f4f9eccc3dcd31a69b313b97909e1f9d597ef",
+      "state": "verified"
+    },
+    {
+      "path": "sources/provenance.json",
+      "bytes": 3019,
+      "sha256": "1ae2cf56da5dbe2cabc8a0e2a68c2b270e7db3c3f99cbbb28adcbcba852f40fc",
+      "url": "https://antonsoo.github.io/akzent/sources/provenance.json",
+      "httpStatus": 200,
+      "observedBytes": 3019,
+      "observedSha256": "1ae2cf56da5dbe2cabc8a0e2a68c2b270e7db3c3f99cbbb28adcbcba852f40fc",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-100.png",
+      "bytes": 191411,
+      "sha256": "16b68b6db903a6960aa8f071eb522dfe272952860ceb8e717d941e409399c549",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-100.png",
+      "httpStatus": 200,
+      "observedBytes": 191411,
+      "observedSha256": "16b68b6db903a6960aa8f071eb522dfe272952860ceb8e717d941e409399c549",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-101.png",
+      "bytes": 184841,
+      "sha256": "17451bc658ed707f11671eaf97a5b17d714234f4564845035568030e44b7c485",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-101.png",
+      "httpStatus": 200,
+      "observedBytes": 184841,
+      "observedSha256": "17451bc658ed707f11671eaf97a5b17d714234f4564845035568030e44b7c485",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-102.png",
+      "bytes": 175023,
+      "sha256": "8f57f174b1a2ebd24f5139f1b4b1564012dd8535722097302e2be92d4de0a309",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-102.png",
+      "httpStatus": 200,
+      "observedBytes": 175023,
+      "observedSha256": "8f57f174b1a2ebd24f5139f1b4b1564012dd8535722097302e2be92d4de0a309",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-114.png",
+      "bytes": 165386,
+      "sha256": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-114.png",
+      "httpStatus": 200,
+      "observedBytes": 165386,
+      "observedSha256": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-115.png",
+      "bytes": 180996,
+      "sha256": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-115.png",
+      "httpStatus": 200,
+      "observedBytes": 180996,
+      "observedSha256": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-117.png",
+      "bytes": 184997,
+      "sha256": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-117.png",
+      "httpStatus": 200,
+      "observedBytes": 184997,
+      "observedSha256": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-118.png",
+      "bytes": 175954,
+      "sha256": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-118.png",
+      "httpStatus": 200,
+      "observedBytes": 175954,
+      "observedSha256": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-119.png",
+      "bytes": 163958,
+      "sha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-119.png",
+      "httpStatus": 200,
+      "observedBytes": 163958,
+      "observedSha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-130.png",
+      "bytes": 156240,
+      "sha256": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-130.png",
+      "httpStatus": 200,
+      "observedBytes": 156240,
+      "observedSha256": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-97.png",
+      "bytes": 130587,
+      "sha256": "1a70f9257eb9e07555deff3319abf26574039347f91d9f45a81779d5ef24d104",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-97.png",
+      "httpStatus": 200,
+      "observedBytes": 130587,
+      "observedSha256": "1a70f9257eb9e07555deff3319abf26574039347f91d9f45a81779d5ef24d104",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-98.png",
+      "bytes": 182921,
+      "sha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-98.png",
+      "httpStatus": 200,
+      "observedBytes": 182921,
+      "observedSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
+      "state": "verified"
+    },
+    {
+      "path": "sources/verner-99.png",
+      "bytes": 190195,
+      "sha256": "6442751b67139c52546f0ffcdcede5ec2cca16347cc4f02936b60d5495505b1d",
+      "url": "https://antonsoo.github.io/akzent/sources/verner-99.png",
+      "httpStatus": 200,
+      "observedBytes": 190195,
+      "observedSha256": "6442751b67139c52546f0ffcdcede5ec2cca16347cc4f02936b60d5495505b1d",
+      "state": "verified"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 10172,
+      "sha256": "ba314547ec224044ac2832a7bc7f1275f2205e5b0d01af0978e5ac138371e65a",
+      "url": "https://antonsoo.github.io/akzent/sw.js",
+      "httpStatus": 200,
+      "observedBytes": 10172,
+      "observedSha256": "ba314547ec224044ac2832a7bc7f1275f2205e5b0d01af0978e5ac138371e65a",
+      "state": "verified"
+    }
+  ],
+  "scope": "Compares canonical responses with this captured build inventory during the recorded pass. Extra hosted files, browser behavior, public source, registry releases and deployment provenance are not established."
+}
