@@ -140,19 +140,22 @@ failure, or assistive technology.
 ## Publication boundary
 
 The [public inquiry](https://antonsoo.github.io/akzent/#inquiry) serves edition
-`defdee8d2ed16c9a8ef2`, built from the audited source at
-[`820a659`](https://github.com/antonsoo/akzent/tree/820a659ae09391a69db26fd022a3e4dc3d39cd32).
-The static publication commit is `90dc813`; it preserves the three existing
+`9e237788001c0007c9dd`, built from the audited source at
+[`809f735`](https://github.com/antonsoo/akzent/tree/809f7350468b3b9f77e562fa30dbdb5d30dd366b).
+The static publication commit is `06d2d3a`; it preserves the five existing
 hashed assets and adds the new files without rewriting publication history.
 
-| Boundary                                              | Recorded evidence                                                                                                                                                                            |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Canonical root, explicit index, all 25 reviewed files | [Before-browser comparison](audit/inquiry-hosted-before.json), [after-browser comparison](audit/inquiry-hosted-after.json); every byte matches                                               |
-| Public inquiry, Chromium/Firefox at 1440/375px        | [Public browser receipt](audit/inquiry-audited-public.json); both goals, branches, undo, fixed proposal, native downloads, source reader and browser-network-offline operation               |
-| Old public edition to new edition                     | [Upgrade receipt](audit/inquiry-public-upgrade.json); three old tabs remain coherent while the new worker waits, closing the last old tab allows activation, and the saved argument survives |
-| Retained older hashed assets                          | [Preservation receipt](audit/inquiry-preserved-assets.json); old entry documents can still request their assets                                                                              |
+| Boundary                                              | Recorded evidence                                                                                                                                                                                     |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Canonical root, explicit index, all 25 reviewed files | [Before-browser comparison](audit/inquiry-progress-hosted-before.json), [after-browser comparison](audit/inquiry-progress-hosted-after.json); every byte matches                                      |
+| Public inquiry, Chromium/Firefox at 1440/375px        | [Public browser receipt](audit/inquiry-progress-public.json); both goals, branches, undo, fixed proposal, native downloads, source reader and browser-network-offline operation                       |
+| Old public edition to new edition                     | [Upgrade receipt](audit/inquiry-progress-public-upgrade.json); three old tabs remain coherent while the new worker waits, closing the last old tab allows activation, and the saved argument survives |
+| Retained older hashed assets                          | [Preservation receipt](audit/inquiry-progress-preserved.json); old entry documents can still request their assets                                                                                     |
 
-The upgrade begins at the actual older public edition, not a local substitute.
+The final upgrade begins at the actual preceding public edition
+`defdee8d2ed16c9a8ef2`, not a local substitute. The first inquiry publication
+(`90dc813`, source `820a659`) and its earlier upgrade receipts remain retained
+as history in this repository.
 Its new source-page check uses the existing complete p. 98; that page was not
 changed by this audit. The separate local transfer driver stops actual origins
 and streams real slow bodies. Public offline checks instead disable the browser
