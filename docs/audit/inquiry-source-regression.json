@@ -1,0 +1,24 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "lateSourceIgnored": true,
+      "fullSizePreserved": true,
+      "snapshotKeptRuleNoteCitationsAndAccent": true,
+      "sameLengthCorruptionRefused": true,
+      "exportRefusedCorruptSource": true,
+      "twoPagesInvalidatedAfterCacheDamage": true,
+      "twoPagesRecoveredAfterVerifiedRepair": true
+    },
+    {
+      "browser": "firefox",
+      "lateSourceIgnored": true,
+      "fullSizePreserved": true,
+      "snapshotKeptRuleNoteCitationsAndAccent": true,
+      "sameLengthCorruptionRefused": true,
+      "exportRefusedCorruptSource": true,
+      "twoPagesInvalidatedAfterCacheDamage": true,
+      "twoPagesRecoveredAfterVerifiedRepair": true
+    }
+  ]
+}

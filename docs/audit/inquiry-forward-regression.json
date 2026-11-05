@@ -1,0 +1,230 @@
+{
+  "builtAt": "2026-11-05T21:38:57.060Z",
+  "url": "http://127.0.0.1:42119/akzent/",
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1440,
+      "endpoints": ["*ahazad(am)", "*agasad(am)", "*agazaþ(am)", "*agazad(am)"],
+      "reordered": ["*ahazad(am)", "*ahazad(am)", "*ahazad(am)", "*ahazad(am)"],
+      "revealedComparisons": 8,
+      "fixedPredictions": 2,
+      "resistantComparisons": 2,
+      "earlyCompoundSourcePage": 98,
+      "earlyCompoundSourceSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
+      "sourcePngSha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "readingSha256": "4fef931f7307b4acda332953ab42a5c673a91e5a9e7cb056fbc5ae3b374fcefb",
+      "offlineReadingIdentical": true,
+      "offlineMode": "actual-origin-refusal",
+      "embeddedSourcePages": [
+        {
+          "alt": "Complete scanned page 98 of Verner's article",
+          "width": 1579,
+          "hash": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+        },
+        {
+          "alt": "Complete scanned page 114 of Verner's article",
+          "width": 1579,
+          "hash": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c"
+        },
+        {
+          "alt": "Complete scanned page 115 of Verner's article",
+          "width": 1579,
+          "hash": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342"
+        },
+        {
+          "alt": "Complete scanned page 117 of Verner's article",
+          "width": 1579,
+          "hash": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35"
+        },
+        {
+          "alt": "Complete scanned page 118 of Verner's article",
+          "width": 1579,
+          "hash": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411"
+        },
+        {
+          "alt": "Complete scanned page 119 of Verner's article",
+          "width": 1579,
+          "hash": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8"
+        },
+        {
+          "alt": "Complete scanned page 130 of Verner's article",
+          "width": 1579,
+          "hash": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90"
+        }
+      ],
+      "axeLightViolations": 0,
+      "axeDarkViolations": 0,
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "endpoints": ["*ahazad(am)", "*agasad(am)", "*agazaþ(am)", "*agazad(am)"],
+      "reordered": ["*ahazad(am)", "*ahazad(am)", "*ahazad(am)", "*ahazad(am)"],
+      "revealedComparisons": 8,
+      "fixedPredictions": 2,
+      "resistantComparisons": 2,
+      "earlyCompoundSourcePage": 98,
+      "earlyCompoundSourceSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
+      "sourcePngSha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "readingSha256": "4fef931f7307b4acda332953ab42a5c673a91e5a9e7cb056fbc5ae3b374fcefb",
+      "offlineReadingIdentical": true,
+      "offlineMode": "actual-origin-refusal",
+      "embeddedSourcePages": [
+        {
+          "alt": "Complete scanned page 98 of Verner's article",
+          "width": 1579,
+          "hash": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+        },
+        {
+          "alt": "Complete scanned page 114 of Verner's article",
+          "width": 1579,
+          "hash": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c"
+        },
+        {
+          "alt": "Complete scanned page 115 of Verner's article",
+          "width": 1579,
+          "hash": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342"
+        },
+        {
+          "alt": "Complete scanned page 117 of Verner's article",
+          "width": 1579,
+          "hash": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35"
+        },
+        {
+          "alt": "Complete scanned page 118 of Verner's article",
+          "width": 1579,
+          "hash": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411"
+        },
+        {
+          "alt": "Complete scanned page 119 of Verner's article",
+          "width": 1579,
+          "hash": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8"
+        },
+        {
+          "alt": "Complete scanned page 130 of Verner's article",
+          "width": 1579,
+          "hash": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90"
+        }
+      ],
+      "axeLightViolations": 0,
+      "axeDarkViolations": 0,
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "browser": "firefox",
+      "width": 1440,
+      "endpoints": ["*ahazad(am)", "*agasad(am)", "*agazaþ(am)", "*agazad(am)"],
+      "reordered": ["*ahazad(am)", "*ahazad(am)", "*ahazad(am)", "*ahazad(am)"],
+      "revealedComparisons": 8,
+      "fixedPredictions": 2,
+      "resistantComparisons": 2,
+      "earlyCompoundSourcePage": 98,
+      "earlyCompoundSourceSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
+      "sourcePngSha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "readingSha256": "4fef931f7307b4acda332953ab42a5c673a91e5a9e7cb056fbc5ae3b374fcefb",
+      "offlineReadingIdentical": true,
+      "offlineMode": "actual-origin-refusal",
+      "embeddedSourcePages": [
+        {
+          "alt": "Complete scanned page 98 of Verner's article",
+          "width": 1579,
+          "hash": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+        },
+        {
+          "alt": "Complete scanned page 114 of Verner's article",
+          "width": 1579,
+          "hash": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c"
+        },
+        {
+          "alt": "Complete scanned page 115 of Verner's article",
+          "width": 1579,
+          "hash": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342"
+        },
+        {
+          "alt": "Complete scanned page 117 of Verner's article",
+          "width": 1579,
+          "hash": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35"
+        },
+        {
+          "alt": "Complete scanned page 118 of Verner's article",
+          "width": 1579,
+          "hash": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411"
+        },
+        {
+          "alt": "Complete scanned page 119 of Verner's article",
+          "width": 1579,
+          "hash": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8"
+        },
+        {
+          "alt": "Complete scanned page 130 of Verner's article",
+          "width": 1579,
+          "hash": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90"
+        }
+      ],
+      "axeLightViolations": 0,
+      "axeDarkViolations": 0,
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "browser": "firefox",
+      "width": 375,
+      "endpoints": ["*ahazad(am)", "*agasad(am)", "*agazaþ(am)", "*agazad(am)"],
+      "reordered": ["*ahazad(am)", "*ahazad(am)", "*ahazad(am)", "*ahazad(am)"],
+      "revealedComparisons": 8,
+      "fixedPredictions": 2,
+      "resistantComparisons": 2,
+      "earlyCompoundSourcePage": 98,
+      "earlyCompoundSourceSha256": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce",
+      "sourcePngSha256": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8",
+      "readingSha256": "4fef931f7307b4acda332953ab42a5c673a91e5a9e7cb056fbc5ae3b374fcefb",
+      "offlineReadingIdentical": true,
+      "offlineMode": "actual-origin-refusal",
+      "embeddedSourcePages": [
+        {
+          "alt": "Complete scanned page 98 of Verner's article",
+          "width": 1579,
+          "hash": "d8c8833e202fb56cb83ba04bcca09512b6d41caa83070dacadca2771918625ce"
+        },
+        {
+          "alt": "Complete scanned page 114 of Verner's article",
+          "width": 1579,
+          "hash": "973ae21daf264a435da88f721140ec47b613484ceb4df3273f3b0aabf2f3b73c"
+        },
+        {
+          "alt": "Complete scanned page 115 of Verner's article",
+          "width": 1579,
+          "hash": "cc1d278903ba8a55363bd160d6a44040781cf848549602c065a7a37dce15e342"
+        },
+        {
+          "alt": "Complete scanned page 117 of Verner's article",
+          "width": 1579,
+          "hash": "0cfbdfc133ea0c3040b29f8346c38a8ada6d8470198574720c96825eaca43c35"
+        },
+        {
+          "alt": "Complete scanned page 118 of Verner's article",
+          "width": 1579,
+          "hash": "71629a1884f4773cd7af1d7928cdd2f3f140b77902c27de0d2252f115f333411"
+        },
+        {
+          "alt": "Complete scanned page 119 of Verner's article",
+          "width": 1579,
+          "hash": "e1f6da2f63cec281e4b718f19bf2baeb6875e782cd88ee97f006f5552f6cc7a8"
+        },
+        {
+          "alt": "Complete scanned page 130 of Verner's article",
+          "width": 1579,
+          "hash": "9f51681d7d6a883432b0cb314bf4ab33094655c4202c048c0f03daff22eb8a90"
+        }
+      ],
+      "axeLightViolations": 0,
+      "axeDarkViolations": 0,
+      "pageErrors": [],
+      "externalRequests": []
+    }
+  ]
+}

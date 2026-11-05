@@ -22,6 +22,31 @@ be unique, ambiguous, or impossible under the stated assumptions.
 
 ![The inverse investigation shows every allowed scenario and why it fits or conflicts](docs/assets/inference-desktop.png)
 
+## Which consonant would you read next?
+
+The local edition adds an inquiry to the existing invented-word workshop.
+Withhold consonants, compare the explanations each possible reading would
+leave, then try a branch. With either event order allowed, the first consonant
+splits eight scenarios into five versus three. The other consonants split them
+one versus seven. These counts compare explanations; they are not probabilities.
+
+A complete **h / z / d** still leaves five scenarios spanning all four older
+accents. No missing letter can restore a distinction already erased before
+voicing. The reading route stops at that boundary, keeping the unresolved
+explanations visible. Checked proposals retain their original inputs.
+
+![Possible readings of the first consonant retain different named explanations](docs/assets/inquiry-desktop.png)
+
+Choose **Next reading** in the local app. Save exact reading-plan CSV, editable
+JSON or an illustrated reading with seven complete source pages. The reading
+now also embeds native JSON and CSV downloads; it can recover editable work
+without a connection or scripts. Its route and output groups expand for print.
+
+[Operate the inquiry and inspect its boundaries](docs/inquiry-review.md) ·
+[Actual downloaded plan](examples/inquiry/reading-plan.csv) ·
+[Illustrated PDF](examples/inquiry/reading-plan.pdf).
+This extension has been verified locally; public delivery has not been updated.
+
 ## Try it
 
 With Node **24 or later**, from this checkout:
@@ -32,7 +57,8 @@ npm run check
 npm run dev
 ```
 
-Open **http://127.0.0.1:4392/akzent/**. For a first investigation:
+Open **http://127.0.0.1:4392/akzent/**. If that port is occupied, use
+`npm run dev -- --port 4397` and open port 4397 instead. For a first investigation:
 1. Change “After an unaccented syllable” to **d / becomes voiced**.
 2. Choose **under / within**, then **Keep prediction & reveal**.
 3. Try **which of two** with the same rule. Keep the mismatch; inspect p. 119.

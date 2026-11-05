@@ -1,0 +1,41 @@
+{
+  "schema": "akzent-notebook",
+  "version": 1,
+  "rule": {
+    "accented": "voiceless",
+    "unaccented": "voiceless"
+  },
+  "selected": "father",
+  "revealed": [
+    "father",
+    "brother"
+  ],
+  "trials": [],
+  "accent": 0,
+  "order": "sounds-first",
+  "conditions": {
+    "initial": false,
+    "voicedNeighbors": true,
+    "precedingAccented": false
+  },
+  "inference": {
+    "evidence": {
+      "dorsal": "?",
+      "sibilant": "?",
+      "dental": "?"
+    },
+    "order": "unknown",
+    "accent": 3,
+    "submitted": {
+      "evidence": {
+        "dorsal": "?",
+        "sibilant": "?",
+        "dental": "?"
+      },
+      "order": "unknown",
+      "accent": 3
+    }
+  },
+  "citations": [],
+  "note": ""
+}

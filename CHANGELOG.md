@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Compare which missing fictional consonant separates the remaining accent/order
+  scenarios; retain ties, conditional contradictions and complete-output ambiguity.
+- Follow a reading route, inspect the original p. 115, and save exact conditional
+  branch and output-class CSVs with explicit source/model scope.
+- Embed editable JSON and three native CSV downloads in illustrated readings;
+  expand the saved inquiry route and output groups for printing.
+- Check all 81 input/order states against literal endpoints and operate the
+  inquiry, downloads, source reader and stopped-origin edition in both browsers.
+
 ## 0.2.1 — 2026-10-30
 
 - Correct the early compound _-fadi-_ citation from printed page 99 to 98;

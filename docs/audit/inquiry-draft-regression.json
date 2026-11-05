@@ -1,0 +1,65 @@
+{
+  "url": "http://127.0.0.1:4391/akzent/",
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1440,
+      "divergentTabsSurviveReload": true,
+      "explicitReplacementRetainsOtherCopy": true,
+      "closedTabRecovered": true,
+      "simultaneousDraftsRetained": true,
+      "axeViolations": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "divergentTabsSurviveReload": true,
+      "explicitReplacementRetainsOtherCopy": true,
+      "closedTabRecovered": true,
+      "simultaneousDraftsRetained": true,
+      "axeViolations": 0
+    },
+    {
+      "browser": "chromium",
+      "lateImportPreservesEdits": true,
+      "supersededImportIgnored": true,
+      "importUndo": true,
+      "newNotebookEscapesPredictionLimit": true,
+      "storageBlockedStillExports": true,
+      "unknownStoredFormatPreservedAndDownloaded": true,
+      "noLocksRetainsSeparateRecovery": true,
+      "noSessionRetainsSeparateRecovery": true,
+      "comparisonLinkPreservesNotebookAndIgnoresUnknownWord": true
+    },
+    {
+      "browser": "firefox",
+      "width": 1440,
+      "divergentTabsSurviveReload": true,
+      "explicitReplacementRetainsOtherCopy": true,
+      "closedTabRecovered": true,
+      "simultaneousDraftsRetained": true,
+      "axeViolations": 0
+    },
+    {
+      "browser": "firefox",
+      "width": 375,
+      "divergentTabsSurviveReload": true,
+      "explicitReplacementRetainsOtherCopy": true,
+      "closedTabRecovered": true,
+      "simultaneousDraftsRetained": true,
+      "axeViolations": 0
+    },
+    {
+      "browser": "firefox",
+      "lateImportPreservesEdits": true,
+      "supersededImportIgnored": true,
+      "importUndo": true,
+      "newNotebookEscapesPredictionLimit": true,
+      "storageBlockedStillExports": true,
+      "unknownStoredFormatPreservedAndDownloaded": true,
+      "noLocksRetainsSeparateRecovery": true,
+      "noSessionRetainsSeparateRecovery": true,
+      "comparisonLinkPreservesNotebookAndIgnoresUnknownWord": true
+    }
+  ]
+}
