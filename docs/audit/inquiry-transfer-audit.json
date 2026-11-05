@@ -1,0 +1,126 @@
+{
+  "before": false,
+  "results": [
+    {
+      "browser": "chromium",
+      "activeBodyMs": 31148,
+      "canceledBodyMs": 1108,
+      "stalledBodyMs": 20013,
+      "oversizedBodyRefused": true,
+      "cancelSaveKeptSeparateReader": true,
+      "ceilingMs": 180020,
+      "coldSlowInstallation": true,
+      "inventory": {
+        "edition": "8d0db5683641863bbc7a",
+        "sourceBytes": 180996
+      }
+    },
+    {
+      "browser": "firefox",
+      "activeBodyMs": 31143,
+      "canceledBodyMs": 1107,
+      "stalledBodyMs": 20194,
+      "oversizedBodyRefused": true,
+      "cancelSaveKeptSeparateReader": true,
+      "ceilingMs": null,
+      "coldSlowInstallation": true,
+      "inventory": {
+        "edition": "8d0db5683641863bbc7a",
+        "sourceBytes": 180996
+      }
+    }
+  ],
+  "transfers": [
+    {
+      "mode": "active",
+      "began": 1793915568375,
+      "sent": 180996,
+      "closedAfterMs": 31028,
+      "completed": true
+    },
+    {
+      "mode": "active",
+      "began": 1793915568520,
+      "sent": 5657,
+      "closedAfterMs": 113,
+      "completed": false
+    },
+    {
+      "mode": "active",
+      "began": 1793915599619,
+      "sent": 11314,
+      "closedAfterMs": 1108,
+      "completed": false
+    },
+    {
+      "mode": "stall",
+      "began": 1793915601122,
+      "sent": 100,
+      "closedAfterMs": 20002,
+      "completed": false
+    },
+    {
+      "mode": "oversize",
+      "began": 1793915621183,
+      "sent": 0,
+      "closedAfterMs": 0,
+      "completed": false
+    },
+    {
+      "mode": "endless",
+      "began": 1793915621249,
+      "sent": 179,
+      "closedAfterMs": 180035,
+      "completed": false
+    },
+    {
+      "mode": "active",
+      "began": 1793915801583,
+      "sent": 180996,
+      "closedAfterMs": 31030,
+      "completed": true
+    },
+    {
+      "mode": "active",
+      "began": 1793915838560,
+      "sent": 180996,
+      "closedAfterMs": 31035,
+      "completed": true
+    },
+    {
+      "mode": "active",
+      "began": 1793915839046,
+      "sent": 5657,
+      "closedAfterMs": 157,
+      "completed": false
+    },
+    {
+      "mode": "active",
+      "began": 1793915869711,
+      "sent": 11314,
+      "closedAfterMs": 1107,
+      "completed": false
+    },
+    {
+      "mode": "stall",
+      "began": 1793915871179,
+      "sent": 100,
+      "closedAfterMs": 20194,
+      "completed": false
+    },
+    {
+      "mode": "oversize",
+      "began": 1793915891455,
+      "sent": 0,
+      "closedAfterMs": 0,
+      "completed": false
+    },
+    {
+      "mode": "active",
+      "began": 1793915892367,
+      "sent": 180996,
+      "closedAfterMs": 31034,
+      "completed": true
+    }
+  ]
+}

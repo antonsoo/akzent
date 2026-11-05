@@ -28,12 +28,15 @@ The local edition adds an inquiry to the existing invented-word workshop.
 Withhold consonants, compare the explanations each possible reading would
 leave, then try a branch. With either event order allowed, the first consonant
 splits eight scenarios into five versus three. The other consonants split them
-one versus seven. These counts compare explanations; they are not probabilities.
+one versus seven. The accent-position goal gives a different result: all three tests tie at a
+worst case of four positions. No next reading guarantees a narrower accent
+answer. Both rankings stay visible; these counts are not probabilities.
 
 A complete **h / z / d** still leaves five scenarios spanning all four older
 accents. No missing letter can restore a distinction already erased before
 voicing. The reading route stops at that boundary, keeping the unresolved
-explanations visible. Checked proposals retain their original inputs.
+explanations visible. Checked proposals retain their original inputs. Undo restores the inputs before
+your last inquiry change in this visit.
 
 ![Possible readings of the first consonant retain different named explanations](docs/assets/inquiry-desktop.png)
 
@@ -43,9 +46,11 @@ now also embeds native JSON and CSV downloads; it can recover editable work
 without a connection or scripts. Its route and output groups expand for print.
 
 [Operate the inquiry and inspect its boundaries](docs/inquiry-review.md) ·
+[Adversarial audit and transfer corrections](docs/inquiry-audit.md) ·
 [Actual downloaded plan](examples/inquiry/reading-plan.csv) ·
 [Illustrated PDF](examples/inquiry/reading-plan.pdf).
-This extension has been verified locally; public delivery has not been updated.
+The audit distinguishes local verification from public delivery; see its
+publication record for the reviewed edition.
 
 ## Try it
 

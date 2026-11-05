@@ -1428,3 +1428,16 @@ footer p {
     flex-wrap: wrap;
   }
 }
+
+.test-bounds {
+  max-width: 480px;
+}
+.test-bounds .accent-bound {
+  margin-top: 9px;
+  color: var(--muted);
+}
+.inquiry-goals {
+  border-left: 3px solid var(--teal);
+  padding-left: 16px;
+  max-width: 72ch;
+}

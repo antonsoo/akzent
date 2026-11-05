@@ -1,0 +1,33 @@
+{
+  "before": true,
+  "results": [
+    {
+      "browser": "chromium",
+      "flowingBodyRejected": true,
+      "afterMs": 20030,
+      "message": "Page 115 could not be shown. Loading sources/verner-115.png took too long. Check the connection and try again; your notebook has been kept."
+    },
+    {
+      "browser": "firefox",
+      "flowingBodyRejected": true,
+      "afterMs": 20640,
+      "message": "Page 115 could not be shown. Loading sources/verner-115.png took too long. Check the connection and try again; your notebook has been kept."
+    }
+  ],
+  "transfers": [
+    {
+      "mode": "active",
+      "began": 1793915215476,
+      "sent": 113140,
+      "closedAfterMs": 19998,
+      "completed": false
+    },
+    {
+      "mode": "active",
+      "began": 1793915238758,
+      "sent": 118797,
+      "closedAfterMs": 20587,
+      "completed": false
+    }
+  ]
+}

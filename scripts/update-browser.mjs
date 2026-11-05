@@ -78,7 +78,7 @@ try {
   console.log(
     "Both browsers and widths retain the old edition. Waiting for the explicit publication marker.",
   );
-  const deadline = Date.now() + 300_000;
+  const deadline = Date.now() + 900_000;
   for (;;) {
     try {
       await readFile(marker);

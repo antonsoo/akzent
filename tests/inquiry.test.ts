@@ -35,6 +35,7 @@ test("all 81 evidence/order states: every conditional branch and complete-output
             expected.map((item) => item.id),
           );
           const worsts: number[] = [];
+          const accentWorsts: number[] = [];
           for (const test of plan.tests) {
             assert.equal(evidence[test.consonant.key], "?");
             const counts = [];
@@ -54,9 +55,29 @@ test("all 81 evidence/order states: every conditional branch and complete-output
               counts.every((n) => n > 0),
             );
             if (test.informative) worsts.push(test.worst);
+            const accentSets = test.branches.map(
+              (branch) =>
+                new Set(
+                  expected
+                    .filter((item) => item.triple[test.consonant.index] === branch.value)
+                    .map((item) => item.id.split(":")[0]),
+                ),
+            );
+            const allAccents = new Set(expected.map((item) => item.id.split(":")[0]));
+            assert.equal(test.worstAccents, Math.max(...accentSets.map((set) => set.size)));
+            assert.equal(
+              test.accentInformative,
+              accentSets.some((set) => set.size > 0 && set.size < allAccents.size),
+            );
+            if (test.accentInformative) accentWorsts.push(test.worstAccents);
           }
           for (const test of plan.tests)
             assert.equal(test.recommended, test.informative && test.worst === Math.min(...worsts));
+          for (const test of plan.tests)
+            assert.equal(
+              test.recommendedForAccent,
+              test.accentInformative && test.worstAccents === Math.min(...accentWorsts),
+            );
           const groups = new Map<string, string[]>();
           for (const item of expected)
             groups.set(item.triple, [...(groups.get(item.triple) ?? []), item.id]);
@@ -106,6 +127,14 @@ test("unknown order makes the first consonant the one-step minimax choice; known
     planInquiry(evidence, "accent-first").tests.map((item) => item.recommended),
     [false, false, false],
   );
+  assert.deepEqual(
+    either.tests.map((item) => item.worstAccents),
+    [4, 4, 4],
+  );
+  assert.deepEqual(
+    either.tests.map((item) => item.recommendedForAccent),
+    [true, true, true],
+  );
   const full = planInquiry({ dorsal: "h", sibilant: "z", dental: "d" }, "unknown");
   assert.equal(full.tests.length, 0);
   assert.equal(full.endpoints.length, 1);
@@ -117,7 +146,7 @@ test("portable markup has no hypothetical action buttons; CSV retains empty bran
   const markup = inquiryMarkup(evidence, "unknown");
   assert.doesNotMatch(markup, /<button/);
   assert.match(markup, /same complete output/);
-  assert.match(markup, /V<\/b> = voicing first/);
+  assert.match(markup, /V<\/b> \(voicing first/);
   const csv = inquiryCsv(evidence, "unknown");
   assert.match(
     csv,

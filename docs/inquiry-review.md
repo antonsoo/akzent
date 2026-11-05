@@ -1,8 +1,9 @@
 # Which consonant would you read next?
 
-This extension is **local source work, not a published edition**. Start Akzent
-with `npm run dev`, choose **Next reading**, and allow either event order.
-The live Pages site and the Officina catalogue have not been changed by this work.
+Start Akzent with `npm run dev`, choose **Next reading**, and allow either
+event order. The [follow-up audit](inquiry-audit.md) records the transfer fixes,
+accent-position ranking, undo, and separate public delivery evidence. This
+document records the original local investigation; its receipts are historical.
 
 ## The learning gap
 
@@ -71,8 +72,9 @@ on the explanation, not another set of attested words.
 
 A scenario contains **both accent and order**. Five scenarios do not mean five
 accent positions. The criterion minimizes the largest **scenario count**;
-it does not minimize the largest count of distinct accents, assign equal
-probabilities, maximize expected information, or prove a globally optimal tree.
+the follow-up audit adds the distinct-accent criterion beside it. The two
+rankings do not assign equal probabilities, maximize expected information, or
+prove a globally optimal tree.
 At each step the route repeats that one-step rule and breaks ties in printed
 consonant order. All tied tests remain marked as tied in the live comparison.
 

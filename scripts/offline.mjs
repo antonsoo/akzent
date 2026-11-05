@@ -1,8 +1,14 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { transformWithOxc } from "vite";
 
 const base = "/akzent/";
+const transferSource = await readFile("src/transfer.ts", "utf8");
+const transferCode = (await transformWithOxc(transferSource, "transfer.ts")).code.replace(
+  /^export /gm,
+  "",
+);
 async function walk(path) {
   const list = [];
   for (const entry of (await readdir(path, { withFileTypes: true })).sort((a, b) =>
@@ -17,6 +23,8 @@ const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const paths = (await walk("dist")).filter((path) => !path.endsWith("/sw.js"));
 const seed = [];
 for (const path of paths) seed.push(`${path}:${hash(await readFile(path))}`);
+seed.push(`transfer-source:${hash(transferSource)}`);
+seed.push(`transfer-code:${hash(transferCode)}`);
 seed.push(`worker-builder:${hash(await readFile(new URL(import.meta.url)))}`);
 const edition = hash(seed.join("\n")).slice(0, 20);
 const html = await readFile("dist/index.html", "utf8");
@@ -32,6 +40,7 @@ for (const path of paths) {
 await writeFile(
   "dist/sw.js",
   `/* Generated from the complete production edition. */
+${transferCode}
 const EDITION = ${JSON.stringify(edition)};
 const CACHE = 'akzent-' + EDITION;
 const FILES = ${JSON.stringify(files)};
@@ -63,15 +72,23 @@ async function matches(response, file) {
   const bytes = await response.arrayBuffer();
   return bytes.byteLength === file.bytes && await digest(bytes) === file.hash;
 }
+const transfers = new Map();
 async function fetchEdition(file) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
-  try {
-    const response = await fetch(file.url, {cache:'reload', signal:controller.signal});
-    if (!await matches(response.clone(), file)) throw new Error('Edition mismatch: ' + file.url);
-    return response;
-  } finally {clearTimeout(timeout);}
+  let pending = transfers.get(file.url);
+  if (!pending) {
+    pending = (async () => {
+      const {bytes, contentType} = await readTransfer(
+        signal => fetch(file.url, {cache:'reload', signal}), file.bytes
+      );
+      if (await digest(bytes) !== file.hash) throw new Error('Edition mismatch: ' + file.url);
+      return new Response(bytes, {headers:{'Content-Type':contentType}});
+    })();
+    transfers.set(file.url, pending);
+  }
+  try {return (await pending).clone();}
+  finally {if (transfers.get(file.url) === pending) transfers.delete(file.url);}
 }
+
 self.addEventListener('install', event => event.waitUntil((async () => {
   const cache = await caches.open(CACHE);
   try {

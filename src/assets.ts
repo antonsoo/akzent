@@ -1,4 +1,5 @@
 import manifest from "./asset-manifest.json";
+import { readTransfer } from "./transfer.ts";
 
 export const assets = manifest;
 export type Asset = (typeof assets)[number];
@@ -33,59 +34,37 @@ export async function verifiedBytes(item: Asset, signal?: AbortSignal): Promise<
 }
 
 async function readVerifiedBytes(item: Asset, signal?: AbortSignal): Promise<ArrayBuffer> {
-  const controller = new AbortController();
-  const cancel = () => controller.abort(signal?.reason);
-  if (signal?.aborted) cancel();
-  else signal?.addEventListener("abort", cancel, { once: true });
-  const timer = setTimeout(
-    () => controller.abort(new DOMException("Source request timed out", "TimeoutError")),
-    20_000,
-  );
-  let response: Response;
   let bytes: ArrayBuffer;
   try {
-    // Firefox can reject a no-store fetch before the worker sees it when the
-    // browser is explicitly offline. Read only this document's named edition;
-    // the ordinary length/hash checks below still apply to every cached byte.
-    const cached = !navigator.onLine ? await editionCache(item) : undefined;
-    controller.signal.throwIfAborted();
-    if (cached) response = cached;
-    else {
-      try {
-        response = await fetch(`${import.meta.env.BASE_URL}${item.path}`, {
-          cache: "no-store",
-          signal: controller.signal,
-        });
-      } catch (error) {
-        controller.signal.throwIfAborted();
-        const fallback = await editionCache(item);
-        if (!fallback) throw error;
-        response = fallback;
-      }
-    }
-    bytes = await response.arrayBuffer();
+    ({ bytes } = await readTransfer(
+      async (transferSignal) => {
+        // Read only this document's named edition. Every cached response still
+        // passes the same size and hash checks as a network response.
+        const cached = !navigator.onLine ? await editionCache(item) : undefined;
+        transferSignal.throwIfAborted();
+        if (cached) return cached;
+        try {
+          return await fetch(`${import.meta.env.BASE_URL}${item.path}`, {
+            cache: "no-store",
+            signal: transferSignal,
+          });
+        } catch (error) {
+          transferSignal.throwIfAborted();
+          const fallback = await editionCache(item);
+          if (!fallback) throw error;
+          return fallback;
+        }
+      },
+      item.bytes,
+      signal,
+    ));
   } catch (error) {
-    if (
-      controller.signal.reason instanceof DOMException &&
-      controller.signal.reason.name === "TimeoutError"
-    ) {
+    if (error instanceof DOMException && error.name === "TimeoutError")
       throw new Error(
-        `Loading ${item.path} took too long. Check the connection and try again; your notebook has been kept.`,
+        `${error.message} Loading ${item.path} stopped; your notebook has been kept. Reconnect and choose the page again.`,
       );
-    }
     throw error;
-  } finally {
-    clearTimeout(timer);
-    signal?.removeEventListener("abort", cancel);
   }
-  if (!response.ok)
-    throw new Error(
-      `Could not load ${item.path} (HTTP ${response.status}). Try again when the file is available.`,
-    );
-  if (bytes.byteLength !== item.bytes)
-    throw new Error(
-      `The downloaded ${item.path} does not match this edition. Reload the page before trying again.`,
-    );
   const hash = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)), (byte) =>
     byte.toString(16).padStart(2, "0"),
   ).join("");

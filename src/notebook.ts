@@ -113,27 +113,28 @@ export function inferenceCsv(state: Notebook): string {
   return `\uFEFF${rows.map((row) => row.map((value) => `"${String(value).replaceAll('"', '""')}"`).join(",")).join("\r\n")}\r\n`;
 }
 
-export async function notebookHtml(input: Notebook): Promise<string> {
+export async function notebookHtml(input: Notebook, signal?: AbortSignal): Promise<string> {
   // Capture before the first asset request. Editing the live page cannot change this export.
   const state = snapshot(input);
   const pages = [98, 114, 115, 117, 118, 119, 130];
   const [gentium, sans, images] = await Promise.all([
-    dataUrl(asset("fonts/gentium.ttf")),
-    dataUrl(asset("fonts/hanken-latin.woff2")),
+    dataUrl(asset("fonts/gentium.ttf"), signal),
+    dataUrl(asset("fonts/hanken-latin.woff2"), signal),
     Promise.all(
       pages.map(async (page) => ({
         page,
         file: asset(`sources/verner-${page}.png`),
-        url: await dataUrl(asset(`sources/verner-${page}.png`)),
+        url: await dataUrl(asset(`sources/verner-${page}.png`), signal),
       })),
     ),
   ]);
   const licenses = await Promise.all(
     ["gentium-OFL.txt", "hanken-OFL.txt"].map(async (name) => {
       const file = asset(`fonts/${name}`);
-      return { name, text: new TextDecoder().decode(await verifiedBytes(file)) };
+      return { name, text: new TextDecoder().decode(await verifiedBytes(file, signal)) };
     }),
   );
+  signal?.throwIfAborted();
   const fixed = state.trials
     .map((trial, index) => {
       const item = word(trial.word);

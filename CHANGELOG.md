@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Audit both goals: minimize surviving accent/order scenarios or surviving old
+  accent positions. Show the different rankings, ties and lack of a guaranteed
+  accent reduction; retain both metrics in the reading-plan CSV.
+- Let a reader undo the last inquiry change and cancel a long illustrated save
+  without canceling the independent source reader or replacing notebook work.
+- Share bounded streaming reads between the reader and offline worker: accept
+  active slow bodies, stop silent or overlong ones, and refuse excess bytes.
+
 - Compare which missing fictional consonant separates the remaining accent/order
   scenarios; retain ties, conditional contradictions and complete-output ambiguity.
 - Follow a reading route, inspect the original p. 115, and save exact conditional

@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "private": true,
   "type": "module",
-  "description": "Test Verner\u2019s accent rule, keep resistant comparisons, and infer which old accents a fictional output permits.",
+  "description": "Test Verner’s accent rule, keep resistant comparisons, and infer which old accents a fictional output permits.",
   "author": "Anthony Mercer <anthony@praviel.com>",
   "license": "PolyForm-Noncommercial-1.0.0",
   "repository": {
@@ -40,7 +40,8 @@
     "test:inference": "node scripts/inference-browser.mjs",
     "verify:pages": "node scripts/verify-pages.mjs",
     "test:inquiry": "node scripts/inquiry-browser.mjs",
-    "verify:inquiry-artifacts": "python3 scripts/inquiry-artifacts.py"
+    "verify:inquiry-artifacts": "python3 scripts/inquiry-artifacts.py",
+    "test:transfers": "node scripts/transfer-browser.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

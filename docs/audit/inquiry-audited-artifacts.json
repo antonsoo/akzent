@@ -1,0 +1,29 @@
+{
+  "independent_literal_endpoints": ["hzd", "gsd", "gz\u00fe", "gzd"],
+  "downloads": [
+    {
+      "case": "chromium-1440",
+      "csv_rows_checked": 75,
+      "embedded_source_pages": 7,
+      "embedded_fonts_verified": 2
+    },
+    {
+      "case": "chromium-375",
+      "csv_rows_checked": 75,
+      "embedded_source_pages": 7,
+      "embedded_fonts_verified": 2
+    },
+    {
+      "case": "firefox-1440",
+      "csv_rows_checked": 75,
+      "embedded_source_pages": 7,
+      "embedded_fonts_verified": 2
+    },
+    {
+      "case": "firefox-375",
+      "csv_rows_checked": 75,
+      "embedded_source_pages": 7,
+      "embedded_fonts_verified": 2
+    }
+  ]
+}

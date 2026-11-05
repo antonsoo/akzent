@@ -49,14 +49,14 @@ required("#app").innerHTML = `
 <div id="experiment"></div><p id="experiment-result" class="experiment-result" role="status"></p><p class="method-note">The first consonant change is assumed: <i>*k, *t</i> become fricatives, while inherited <i>*s</i> is already one. The trace uses modern symbols <i>x, ɣ, θ, ð</i>; the endpoint uses Verner’s hypothetical spellings. It isolates consonants, not the full history of a word. Reordering is an experiment on this explanation, not independent evidence for historical dates.</p>
 <details><summary>Compare with Verner’s four printed outcomes</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Verner’s four fictional outcomes; arrow keys scroll the table"><table><caption>Original thought experiment, pp. 114–115</caption><thead><tr><th>Older accent</th><th>Hypothetical spelling</th></tr></thead><tbody><tr><td>First syllable</td><td>*ahazad(am)</td></tr><tr><td>Second syllable</td><td>*agasad(am)</td></tr><tr><td>Third syllable</td><td>*agazaþ(am)</td></tr><tr><td>Fourth syllable</td><td>*agazad(am)</td></tr></tbody></table></div></details>
 <div id="infer" class="inference-bench" aria-labelledby="infer-title"><div class="section-intro"><h3 id="infer-title">Can the consonants give the accent back?</h3><p>Keep only some consonants from the fictional output. Which older accents could have left them? A question mark means no evidence for that consonant.</p></div><div class="evidence-controls"><label for="evidence-dorsal">First consonant<select id="evidence-dorsal"><option value="?">? / unknown</option><option value="h">h / voiceless</option><option value="g">g / voiced</option></select></label><label for="evidence-sibilant">Second consonant<select id="evidence-sibilant"><option value="?">? / unknown</option><option value="s">s / voiceless</option><option value="z">z / voiced</option></select></label><label for="evidence-dental">Third consonant<select id="evidence-dental"><option value="?">? / unknown</option><option value="þ">þ / voiceless</option><option value="d">d / voiced</option></select></label></div><label for="evidence-order">What do you assume about event order?<select id="evidence-order"><option value="sounds-first">Voicing uses the old accent; accent moves later</option><option value="accent-first">Accent fixed on the first syllable before voicing</option><option value="unknown">Allow either order</option></select></label><button id="copy-evidence" type="button">Use the current hypothetical output</button><p id="inference-action-status" role="status"></p><div id="inference-results"></div><div class="proposal-controls"><label for="proposed-accent">My proposed older accent<select id="proposed-accent"><option value="0">Position 1</option><option value="1">Position 2</option><option value="2">Position 3</option><option value="3">Position 4</option></select></label><button id="check-accent" type="button" class="primary">Check my accent proposal</button><button id="restore-proposal" type="button">Restore the checked evidence</button><button id="save-evidence-csv" type="button">Save accent account CSV</button></div><p class="method-note">These are constraints on Verner’s invented word, not a recovered ancient text. A compatible accent need not be uniquely identified. No match means this one-accent model and order assumption cannot produce those consonants together.</p></div>
-<section id="inquiry" class="inquiry" aria-labelledby="inquiry-title"><h3 id="inquiry-title">Which consonant would you read next?</h3><p>Withhold part of Verner’s invented word. Which missing consonant would separate the explanations that still fit? Compare both outcomes, then try a reading.</p><p class="small">A modern thought experiment; no historical copy is damaged. <a href="#infer">Edit consonants or check a proposal</a>.</p><label class="inquiry-order" for="inquiry-order">Event order for this inquiry<select id="inquiry-order"><option value="sounds-first">Voicing uses the old accent; accent moves later</option><option value="accent-first">Accent fixed on the first syllable before voicing</option><option value="unknown">Allow either order</option></select></label><div class="inquiry-actions"><button id="inquiry-start" type="button">Withhold all three consonants</button><button id="inquiry-erasure" type="button">Try the shared complete output</button></div><p id="inquiry-status" role="status" tabindex="-1"></p><div id="inquiry-results"></div><div class="inquiry-actions"><button id="save-inquiry-csv" type="button">Save reading plan CSV</button><button id="inquiry-source" type="button">Inspect Verner’s four outputs</button></div></section>
+<section id="inquiry" class="inquiry" aria-labelledby="inquiry-title"><h3 id="inquiry-title">Which consonant would you read next?</h3><p>Withhold part of Verner’s invented word. Which missing consonant would separate the explanations that still fit? Compare both outcomes, then try a reading.</p><p class="small">A modern thought experiment; no historical copy is damaged. <a href="#infer">Edit consonants or check a proposal</a>.</p><label class="inquiry-order" for="inquiry-order">Event order for this inquiry<select id="inquiry-order"><option value="sounds-first">Voicing uses the old accent; accent moves later</option><option value="accent-first">Accent fixed on the first syllable before voicing</option><option value="unknown">Allow either order</option></select></label><div class="inquiry-actions"><button id="inquiry-start" type="button">Withhold all three consonants</button><button id="inquiry-erasure" type="button">Try the shared complete output</button><button id="inquiry-undo" type="button" disabled>Undo last inquiry change</button></div><p id="inquiry-status" role="status" tabindex="-1"></p><div id="inquiry-results"></div><div class="inquiry-actions"><button id="save-inquiry-csv" type="button">Save reading plan CSV</button><button id="inquiry-source" type="button">Inspect Verner’s four outputs</button></div></section>
 <div class="conditions"><div><h3>Accent alone is not the condition</h3><p>Test a schematic dental fricative. The older accent only matters inside a word and among voiced sounds.</p></div><fieldset><legend>Change its environment</legend><label><input id="initial" type="checkbox"> At the start of a word</label><label><input id="neighbors" type="checkbox" checked> Neighbors are voiced</label><label><input id="preceding" type="checkbox"> Immediately preceding syllable accented</label></fieldset><p id="condition-result" role="status"></p></div></section>
 
 <section id="source" class="source" aria-labelledby="source-title"><div class="section-intro"><h2 id="source-title">Read the claim.<br>Keep the difficult line.</h2><p>Karl Verner, <cite lang="de">Eine ausnahme der ersten lautverschiebung</cite>, volume 23 (1877), pp. 97–130. Signed Copenhagen, July 1875. New English translations accompany normalized German excerpts.</p></div><div class="reading-buttons" aria-label="Source readings">${readings.map((entry) => `<button type="button" data-reading="${entry.id}" aria-pressed="false">${e(entry.title)}</button>`).join("")}</div>
 <div class="reader-grid"><article class="reading"><div id="reading-copy"></div><div id="phrase-buttons" class="phrase-buttons"></div><p id="phrase-note" role="status"></p><label class="cite"><input id="cite-reading" type="checkbox"> Cite this reading in my notebook</label><p class="small">The excerpts normalize the dental sign to þ and use an ellipsis where marked. The complete pages preserve the printed notation and surrounding argument.</p></article><figure class="scan"><div class="scan-controls"><label for="source-page">Printed page<select id="source-page">${[97, 98, 99, 100, 101, 102, 114, 115, 117, 118, 119, 130].map((page) => `<option value="${page}">${page}</option>`).join("")}</select></label><button type="button" id="zoom-source" aria-pressed="false">Full size</button><button type="button" id="save-source">Save page PNG</button></div><p id="source-status" role="status"></p><div class="scan-window" tabindex="0" role="region" aria-label="Complete source page; arrow keys pan at full size"><img id="source-image" alt="" hidden></div><figcaption id="source-caption"></figcaption></figure></div>
 <p class="source-links"><a href="./sources/NOTICE.txt">Source and normalization notice</a><a href="./sources/provenance.json">Scan provenance</a><a href="https://archive.org/details/india.history.resource.77512">Original volume</a><a href="https://lrc.la.utexas.edu/books/reader/11-k-verner">1967 translation for comparison</a></p></section>
 
-<section id="notebook" class="notebook" aria-labelledby="notebook-title"><div class="section-intro"><h2 id="notebook-title">Leave with an argument.</h2><p>Your notebook keeps the rule, earlier predictions, citations, and accent experiment. Explain what your evidence supports and which comparison still needs an account.</p></div><label for="explanation">My explanation</label><textarea id="explanation" rows="6" maxlength="8000" placeholder="Which observation changed your rule? What would you need to explain a resistant comparison?"></textarea><p id="citation-list"></p><p id="storage-status" class="small">${e(storageNotice)}</p><div id="storage-conflict" class="draft-notice" hidden><p>The saved browser copy differs from this notebook. Your current work is still here.</p><div class="draft-actions"><button id="keep-tab" type="button">Use this tab as the saved copy</button><button id="open-shared" type="button">Open the other saved copy</button></div><p class="small">The replaced browser copy remains available under recovery copies.</p></div><div id="import-pending" class="draft-notice" hidden><p id="import-pending-message"></p><div class="draft-actions"><button id="apply-import" type="button">Open the selected notebook</button><button id="cancel-import" type="button">Keep editing this notebook</button></div></div><div class="draft-actions"><button id="new-notebook" type="button">Start a new notebook</button><button id="undo-notebook" type="button" disabled>Restore previous notebook</button></div><details class="recovery"><summary>Browser recovery copies</summary><p class="small">Copies preserved when tabs disagree or one saved copy replaces another. Save JSON for a copy outside this browser.</p><label for="recovery-choice">Choose a copy<select id="recovery-choice"></select></label><button id="open-recovery" type="button">Open recovery copy</button><button id="save-recovery" type="button">Save raw recovery JSON</button><p id="recovery-status" role="status"></p></details><div class="exports"><button id="save-json" type="button" class="primary">Save editable JSON</button><button id="save-html" type="button">Save illustrated reading</button><button id="save-csv" type="button">Save comparison CSV</button><button id="save-svg" type="button">Save experiment SVG</button><label class="file-label" for="open-notebook">Reopen JSON<input id="open-notebook" type="file" accept=".json,application/json"></label></div><p id="export-status" role="status"></p><p class="small">The illustrated HTML embeds the current notebook, seven complete source pages, fonts, and their licenses. It opens without a connection and prints through your browser. JSON reopens here; CSV preserves current comparisons and fixed predictions. Downloads take a snapshot when you press the button.</p></section>
+<section id="notebook" class="notebook" aria-labelledby="notebook-title"><div class="section-intro"><h2 id="notebook-title">Leave with an argument.</h2><p>Your notebook keeps the rule, earlier predictions, citations, and accent experiment. Explain what your evidence supports and which comparison still needs an account.</p></div><label for="explanation">My explanation</label><textarea id="explanation" rows="6" maxlength="8000" placeholder="Which observation changed your rule? What would you need to explain a resistant comparison?"></textarea><p id="citation-list"></p><p id="storage-status" class="small">${e(storageNotice)}</p><div id="storage-conflict" class="draft-notice" hidden><p>The saved browser copy differs from this notebook. Your current work is still here.</p><div class="draft-actions"><button id="keep-tab" type="button">Use this tab as the saved copy</button><button id="open-shared" type="button">Open the other saved copy</button></div><p class="small">The replaced browser copy remains available under recovery copies.</p></div><div id="import-pending" class="draft-notice" hidden><p id="import-pending-message"></p><div class="draft-actions"><button id="apply-import" type="button">Open the selected notebook</button><button id="cancel-import" type="button">Keep editing this notebook</button></div></div><div class="draft-actions"><button id="new-notebook" type="button">Start a new notebook</button><button id="undo-notebook" type="button" disabled>Restore previous notebook</button></div><details class="recovery"><summary>Browser recovery copies</summary><p class="small">Copies preserved when tabs disagree or one saved copy replaces another. Save JSON for a copy outside this browser.</p><label for="recovery-choice">Choose a copy<select id="recovery-choice"></select></label><button id="open-recovery" type="button">Open recovery copy</button><button id="save-recovery" type="button">Save raw recovery JSON</button><p id="recovery-status" role="status"></p></details><div class="exports"><button id="save-json" type="button" class="primary">Save editable JSON</button><button id="save-html" type="button">Save illustrated reading</button><button id="cancel-html" type="button" hidden>Cancel reading save</button><button id="save-csv" type="button">Save comparison CSV</button><button id="save-svg" type="button">Save experiment SVG</button><label class="file-label" for="open-notebook">Reopen JSON<input id="open-notebook" type="file" accept=".json,application/json"></label></div><p id="export-status" role="status"></p><p class="small">The illustrated HTML embeds the current notebook, seven complete source pages, fonts, and their licenses. It opens without a connection and prints through your browser. JSON reopens here; CSV preserves current comparisons and fixed predictions. Downloads take a snapshot when you press the button.</p></section>
 <section class="scope" aria-labelledby="scope-title"><h2 id="scope-title">What remains outside the experiment</h2><p>This is a bounded reading of Verner’s argument, not a general etymology generator. It does not identify cognates from spelling, reconstruct entire words, or derive Gothic from Sanskrit. The dental test ignores other sound changes and inflection. Compound accent, analogy, competing daughter-language accents, and later English changes require additional evidence.</p><p>Gothic d is an observed spelling, while *ð is a schematic reconstructed sound. The older accent’s exact acoustic realization is not simulated. Language relationships do not establish a person’s genetic ancestry, ethnicity, or identity.</p></section></main>
 <footer><p id="offline-status" role="status">Preparing the offline edition…</p><p>Anthony Mercer / <a href="https://praviel.com">PRAVIEL</a> / <a href="https://github.com/antonsoo/akzent">Source code</a></p><p>Code and new translations: PolyForm Noncommercial. Historical pages: public domain. Fonts: SIL OFL.</p></footer>`;
 
@@ -116,6 +116,7 @@ function replaceNotebook(opened: Notebook, message: string): void {
     required("#storage-status").textContent =
       "The previous notebook could not be kept in this tab. Save JSON before leaving the page.";
   }
+  inquiryUndo = undefined;
   state = snapshot(opened);
   syncControls();
   renderWord();
@@ -191,7 +192,17 @@ function renderExperiment(): void {
       : `All four starting accents now give ${experiment(state.accent, state.order).endpoint}. Moving the accent early erased the distinction before it could affect the consonants.`;
 }
 
+let inquiryUndo: { before: { evidence: Evidence; order: AssumedOrder }; after: string } | undefined;
+const inquiryInputs = () => ({
+  evidence: { ...state.inference.evidence },
+  order: state.inference.order,
+});
+function rememberInquiry(before: { evidence: Evidence; order: AssumedOrder }): void {
+  inquiryUndo = { before, after: JSON.stringify(inquiryInputs()) };
+}
 function renderInference(): void {
+  if (inquiryUndo && inquiryUndo.after !== JSON.stringify(inquiryInputs())) inquiryUndo = undefined;
+  required<HTMLButtonElement>("#inquiry-undo").disabled = !inquiryUndo;
   required("#inquiry-status").textContent = "";
   required<HTMLSelectElement>("#evidence-dorsal").value = state.inference.evidence.dorsal;
   required<HTMLSelectElement>("#evidence-sibilant").value = state.inference.evidence.sibilant;
@@ -388,10 +399,12 @@ required("#inquiry-results").addEventListener("click", (event) => {
       ? event.target.closest<HTMLButtonElement>("[data-inquiry-key]")
       : null;
   if (!button) return;
+  const before = inquiryInputs();
   const key = button.dataset.inquiryKey as keyof Evidence;
   const value = button.dataset.inquiryValue;
   // Buttons are generated from the finite partition, never from imported markup.
   state.inference.evidence = { ...state.inference.evidence, [key]: value };
+  rememberInquiry(before);
   renderInference();
   save();
   required("#inquiry-status").textContent =
@@ -400,26 +413,44 @@ required("#inquiry-results").addEventListener("click", (event) => {
   required("#inquiry-status").scrollIntoView({ block: "nearest" });
 });
 required("#inquiry-order").addEventListener("change", () => {
+  const before = inquiryInputs();
   state.inference.order = required<HTMLSelectElement>("#inquiry-order").value as AssumedOrder;
+  rememberInquiry(before);
   renderInference();
   save();
   required("#inquiry-status").textContent =
     "Changed the inquiry’s event-order assumption. The working consonants and checked proposal are kept.";
 });
 required("#inquiry-start").addEventListener("click", () => {
+  const before = inquiryInputs();
   state.inference.evidence = { dorsal: "?", sibilant: "?", dental: "?" };
+  rememberInquiry(before);
   renderInference();
   save();
   required("#inquiry-status").textContent =
     "Withheld all three consonants. Kept your event-order assumption and last checked proposal. Compare the branches below.";
 });
 required("#inquiry-erasure").addEventListener("click", () => {
+  const before = inquiryInputs();
   state.inference.evidence = { dorsal: "h", sibilant: "z", dental: "d" };
   state.inference.order = "unknown";
+  rememberInquiry(before);
   renderInference();
   save();
   required("#inquiry-status").textContent =
     "Example: h / z / d with either event order allowed. All consonants are supplied; five explanations still fit. The checked proposal is unchanged.";
+});
+required("#inquiry-undo").addEventListener("click", () => {
+  if (!inquiryUndo) return;
+  const previous = inquiryUndo.before;
+  inquiryUndo = undefined;
+  state.inference.evidence = { ...previous.evidence };
+  state.inference.order = previous.order;
+  renderInference();
+  save();
+  required("#inquiry-status").textContent =
+    "Restored the inputs before your last inquiry change in this visit. The checked proposal is unchanged.";
+  required("#inquiry-status").focus({ preventScroll: true });
 });
 required("#save-inquiry-csv").addEventListener("click", () => {
   download(
@@ -534,21 +565,40 @@ required("#save-svg").addEventListener("click", () => {
   required("#export-status").textContent =
     "Saved the current accent and event order as an SVG drawing.";
 });
+let exportController: AbortController | undefined;
+required("#cancel-html").addEventListener("click", () => {
+  exportController?.abort(new DOMException("Reading save canceled", "AbortError"));
+});
 required<HTMLButtonElement>("#save-html").addEventListener("click", async () => {
+  if (exportController) return;
+  const controller = new AbortController();
+  exportController = controller;
   const button = required<HTMLButtonElement>("#save-html");
+  const cancel = required<HTMLButtonElement>("#cancel-html");
   const captured = snapshot(state);
   button.disabled = true;
+  cancel.hidden = false;
   required("#export-status").textContent =
     "Checking and embedding seven source pages, fonts, and your notebook…";
   try {
-    download("akzent-reading.html", await notebookHtml(captured), "text/html;charset=utf-8");
+    const html = await notebookHtml(captured, controller.signal);
+    controller.signal.throwIfAborted();
+    download("akzent-reading.html", html, "text/html;charset=utf-8");
     required("#export-status").textContent =
       "Illustrated reading saved. Open the HTML without a connection, or print it to PDF through your browser.";
   } catch (error) {
-    required("#export-status").textContent =
-      `The reading was not saved. ${error instanceof Error ? error.message : "Check the retained files and try again."}`;
+    const canceled = controller.signal.aborted;
+    // A failed asset also stops sibling reads; this controller belongs only to the save.
+    controller.abort();
+    required("#export-status").textContent = canceled
+      ? "Reading save canceled. Your notebook and separate source reader are kept."
+      : `The reading was not saved. ${error instanceof Error ? error.message : "Check the retained files and try again."}`;
   } finally {
+    const restoreFocus = document.activeElement === cancel;
+    exportController = undefined;
     button.disabled = false;
+    cancel.hidden = true;
+    if (restoreFocus) button.focus({ preventScroll: true });
   }
 });
 required<HTMLInputElement>("#open-notebook").addEventListener("change", async () => {

@@ -8,6 +8,7 @@ import { pathToFileURL } from "node:url";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium, firefox } from "playwright";
 
+const publicURL = process.env.AKZENT_PUBLIC_URL;
 const output = resolve(process.argv[2] ?? "test-results/inquiry");
 await mkdir(output, { recursive: true });
 const results = [];
@@ -60,7 +61,7 @@ async function startServer(port) {
   throw new Error(`Preview did not start: ${log}`);
 }
 async function stopServer(server) {
-  if (server.exitCode !== null) return;
+  if (!server || server.exitCode !== null) return;
   const stopped = once(server, "exit");
   server.kill();
   await stopped;
@@ -73,7 +74,9 @@ for (const [name, engine] of [
   const browser = await engine.launch({ headless: true });
   try {
     for (const width of [1440, 375]) {
-      const { server, url } = await startServer(4394);
+      const { server, url } = publicURL
+        ? { server: null, url: publicURL }
+        : await startServer(4394);
       const folder = join(output, `${name}-${width}`);
       await mkdir(folder, { recursive: true });
       const context = await browser.newContext({
@@ -91,6 +94,18 @@ for (const [name, engine] of [
         await page.locator("#inquiry-order").selectOption("unknown");
         await waitText(page, ".inquiry-context", "leaves 8 scenarios");
         assert.equal(await page.locator("#evidence-order").inputValue(), "unknown");
+        assert.equal(
+          await page.locator(".accent-bound").filter({ hasText: "4 accent positions" }).count(),
+          3,
+        );
+        assert.equal(
+          await page
+            .locator(".accent-bound")
+            .filter({ hasText: "No guaranteed reduction" })
+            .count(),
+          3,
+        );
+        await waitText(page, ".inquiry-goals", "rank the readings differently");
         const counts = await page.locator(".outcome-title").allTextContents();
         assert.deepEqual(counts, [
           "If h: 5 scenarios",
@@ -144,6 +159,11 @@ for (const [name, engine] of [
         // Keyboard-operated conditional branches must survive rerender and retain the fixed proposal.
         await page.locator('[data-inquiry-key="dorsal"][data-inquiry-value="g"]').focus();
         await page.keyboard.press("Space");
+        await waitText(page, ".inquiry-context", "leaves 3 scenarios");
+        await page.locator("#inquiry-undo").click();
+        await waitText(page, ".inquiry-context", "leaves 8 scenarios");
+        assert.equal(await page.locator("#inquiry-undo").isDisabled(), true);
+        await page.locator('[data-inquiry-key="dorsal"][data-inquiry-value="g"]').click();
         await waitText(page, ".inquiry-context", "leaves 3 scenarios");
         assert.equal(await page.evaluate(() => document.activeElement.id), "inquiry-status");
         assert.equal(await page.locator("#evidence-dorsal").inputValue(), "g");
@@ -260,7 +280,8 @@ for (const [name, engine] of [
         await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
         const edition = await page.locator('meta[name="akzent-edition"]').getAttribute("content");
         await stopServer(server);
-        await assert.rejects(fetch(url), /fetch failed/);
+        if (server) await assert.rejects(fetch(url), /fetch failed/);
+        else await context.setOffline(true);
         await page.reload({ waitUntil: "domcontentloaded" });
         await waitText(page, "#offline-status", "available offline");
         await waitText(page, ".inquiry-summary", "Every consonant is supplied");
@@ -292,7 +313,8 @@ for (const [name, engine] of [
           sourcePngVerified: true,
           jsonRoundTrip: true,
           scriptFreeReadingWithoutHttp: true,
-          originStopped: true,
+          originStopped: !publicURL,
+          browserNetworkOffline: Boolean(publicURL),
           offlineReloadAndOperation: true,
           lightViolations: light.violations.length,
           darkViolations: dark.violations.length,
@@ -312,5 +334,5 @@ for (const [name, engine] of [
 }
 await writeFile(
   join(output, "review.json"),
-  `${JSON.stringify({ publication: "local only; no push or deployment", results }, null, 2)}\n`,
+  `${JSON.stringify({ publication: publicURL ? "canonical public edition; browser network disabled for offline steps" : "local only; no push or deployment", results }, null, 2)}\n`,
 );

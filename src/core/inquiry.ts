@@ -17,6 +17,9 @@ export interface ReadingTest {
   worst: number;
   informative: boolean;
   recommended: boolean;
+  worstAccents: number;
+  accentInformative: boolean;
+  recommendedForAccent: boolean;
 }
 export interface EndpointGroup {
   output: string;
@@ -27,6 +30,9 @@ export interface Inquiry {
   tests: ReadingTest[];
   endpoints: EndpointGroup[];
 }
+
+export const accentCount = (scenarios: Scenario[]): number =>
+  new Set(scenarios.map((item) => item.accent)).size;
 
 /** A finite partition of explanations, not a probability distribution over historical events. */
 export function planInquiry(evidence: Evidence, order: AssumedOrder): Inquiry {
@@ -47,10 +53,21 @@ export function planInquiry(evidence: Evidence, order: AssumedOrder): Inquiry {
         worst,
         informative: branches.filter((branch) => branch.scenarios.length > 0).length > 1,
         recommended: false,
+        worstAccents: Math.max(...branches.map((branch) => accentCount(branch.scenarios))),
+        accentInformative: branches.some(
+          (branch) =>
+            branch.scenarios.length > 0 && accentCount(branch.scenarios) < accentCount(scenarios),
+        ),
+        recommendedForAccent: false,
       };
     });
   const best = Math.min(...tests.filter((item) => item.informative).map((item) => item.worst));
   for (const item of tests) item.recommended = item.informative && item.worst === best;
+  const bestAccent = Math.min(
+    ...tests.filter((item) => item.accentInformative).map((item) => item.worstAccents),
+  );
+  for (const item of tests)
+    item.recommendedForAccent = item.accentInformative && item.worstAccents === bestAccent;
   const endpoints: EndpointGroup[] = [];
   for (const scenario of scenarios) {
     const group = endpoints.find((item) => item.output === scenario.endpoint);
@@ -102,12 +119,22 @@ export function inquiryCsv(evidence: Evidence, order: AssumedOrder): string {
     "branch_scenarios",
     "largest_branch",
     "recommended",
+    "branch_accent_positions",
+    "largest_accent_branch",
+    "recommended_for_accent",
   ];
   const rows: (string | number | boolean)[][] = [];
   const prefix = [evidence.dorsal, evidence.sibilant, evidence.dental, order];
   for (const test of plan.tests) {
     for (const branch of test.branches) {
-      const suffix = [branch.scenarios.length, test.worst, test.recommended];
+      const suffix = [
+        branch.scenarios.length,
+        test.worst,
+        test.recommended,
+        [...new Set(branch.scenarios.map((item) => item.accent + 1))].sort().join(";"),
+        test.worstAccents,
+        test.recommendedForAccent,
+      ];
       if (!branch.scenarios.length)
         rows.push([
           "possible-reading",
@@ -145,9 +172,12 @@ export function inquiryCsv(evidence: Evidence, order: AssumedOrder): string {
         group.scenarios.length,
         "",
         "",
+        [...new Set(group.scenarios.map((item) => item.accent + 1))].sort().join(";"),
+        "",
+        "",
       ]);
   if (!plan.scenarios.length)
-    rows.push(["inconsistent-evidence", ...prefix, "", "", "", "", "", 0, "", ""]);
+    rows.push(["inconsistent-evidence", ...prefix, "", "", "", "", "", 0, "", "", "", "", ""]);
   const source = "Karl Verner, Eine ausnahme der ersten lautverschiebung, 23 (1877), pp. 114-115";
   const scope = "Modern conditional exercise on fictional outputs; counts are not probabilities";
   const complete = [[...header, "source", "scope"], ...rows.map((row) => [...row, source, scope])];

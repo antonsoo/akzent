@@ -50,6 +50,11 @@ for folder in sorted(path for path in root.iterdir() if path.is_dir()):
                 assert sorted(actual_ids) == sorted((accent, kind) for accent, kind, triple in scenarios if triple[index] == value)
                 assert all(int(row["branch_scenarios"]) == count and int(row["largest_branch"]) == worst for row in branches)
                 assert all(row["recommended"] == str(bool(all(counts) and worst == best)).lower() for row in branches)
+                actual_accents = sorted({accent for accent, _, triple in scenarios if triple[index] == value})
+                assert all(row["branch_accent_positions"] == ";".join(actual_accents) for row in branches)
+                worst_accents = max(len({accent for accent, _, triple in scenarios if triple[index] == observed}) for observed in values)
+                assert all(int(row["largest_accent_branch"]) == worst_accents for row in branches)
+
         assert all("114-115" in row["source"] and "not probabilities" in row["scope"] for row in rows)
         checked_rows += len(rows)
     document = (folder / "reading.html").read_text()
