@@ -1,10 +1,12 @@
 import "./style.css";
 import { asset, verifiedBytes } from "./assets.ts";
 import type { AssumedOrder, Evidence } from "./core/inference.ts";
+import { inquiryCsv } from "./core/inquiry.ts";
 import type { Accent, Order, Outcome } from "./core/model.ts";
 import { experiment, predictDental, voiceFricative } from "./core/model.ts";
 import { initialNotebook, type Notebook, readNotebook, snapshot } from "./core/record.ts";
 import { download, escapeHtml as e, required } from "./html.ts";
+import { inquiryMarkup } from "./inquiry-view.ts";
 import { comparisonCsv, inferenceCsv, notebookHtml } from "./notebook.ts";
 import { installOffline } from "./offline.ts";
 import { NotebookStorage, SHARED_KEY } from "./persistence.ts";
@@ -32,7 +34,7 @@ try {
 }
 
 required("#app").innerHTML = `
-<header class="masthead"><a href="#top" class="brand">Akzent<span aria-hidden="true">´</span></a><nav aria-label="Workshop"><a href="#words">Words</a><a href="#invented">Invented word</a><a href="#source">Source</a><a href="#notebook">Notebook</a></nav><button id="theme" type="button">Change theme</button></header>
+<header class="masthead"><a href="#top" class="brand">Akzent<span aria-hidden="true">´</span></a><nav aria-label="Workshop"><a href="#words">Words</a><a href="#invented">Invented word</a><a href="#inquiry">Next reading</a><a href="#source">Source</a><a href="#notebook">Notebook</a></nav><button id="theme" type="button">Change theme</button></header>
 <main id="top"><section id="words" class="opening" aria-labelledby="word-title"><div class="intro"><h1 id="word-title">Why did t split in two?</h1><p>Gothic has <i lang="got-Latn">fadar</i> ‘father’, but <i lang="got-Latn">brōþar</i> ‘brother’. Both middle consonants continue an older <i>t</i>. Use Sanskrit’s accent to investigate the difference.</p></div>
 <div class="pair"><article><p class="meaning">Gothic / father</p><div class="hero-word">${chunks(word("father").gothic, "got-Latn")}</div><div class="comparandum"><span>Sanskrit stem</span>${chunks(word("father").sanskrit, "sa-Latn")}</div><p>The accent comes <strong>after</strong> the dental.</p></article><article><p class="meaning">Gothic / brother</p><div class="hero-word">${chunks(word("brother").gothic, "got-Latn")}</div><div class="comparandum"><span>Sanskrit stem</span>${chunks(word("brother").sanskrit, "sa-Latn")}</div><p>The accent comes <strong>before</strong> the dental.</p></article></div>
 <p class="notation"><b>´</b> marks accent. <b>ā</b> marks vowel length. <b>þ</b> is the <i>th</i> in <i>thin</i>. Sanskrit and Gothic are relatives; neither is derived from the other.</p>
@@ -47,6 +49,7 @@ required("#app").innerHTML = `
 <div id="experiment"></div><p id="experiment-result" class="experiment-result" role="status"></p><p class="method-note">The first consonant change is assumed: <i>*k, *t</i> become fricatives, while inherited <i>*s</i> is already one. The trace uses modern symbols <i>x, ɣ, θ, ð</i>; the endpoint uses Verner’s hypothetical spellings. It isolates consonants, not the full history of a word. Reordering is an experiment on this explanation, not independent evidence for historical dates.</p>
 <details><summary>Compare with Verner’s four printed outcomes</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Verner’s four fictional outcomes; arrow keys scroll the table"><table><caption>Original thought experiment, pp. 114–115</caption><thead><tr><th>Older accent</th><th>Hypothetical spelling</th></tr></thead><tbody><tr><td>First syllable</td><td>*ahazad(am)</td></tr><tr><td>Second syllable</td><td>*agasad(am)</td></tr><tr><td>Third syllable</td><td>*agazaþ(am)</td></tr><tr><td>Fourth syllable</td><td>*agazad(am)</td></tr></tbody></table></div></details>
 <div id="infer" class="inference-bench" aria-labelledby="infer-title"><div class="section-intro"><h3 id="infer-title">Can the consonants give the accent back?</h3><p>Keep only some consonants from the fictional output. Which older accents could have left them? A question mark means no evidence for that consonant.</p></div><div class="evidence-controls"><label for="evidence-dorsal">First consonant<select id="evidence-dorsal"><option value="?">? / unknown</option><option value="h">h / voiceless</option><option value="g">g / voiced</option></select></label><label for="evidence-sibilant">Second consonant<select id="evidence-sibilant"><option value="?">? / unknown</option><option value="s">s / voiceless</option><option value="z">z / voiced</option></select></label><label for="evidence-dental">Third consonant<select id="evidence-dental"><option value="?">? / unknown</option><option value="þ">þ / voiceless</option><option value="d">d / voiced</option></select></label></div><label for="evidence-order">What do you assume about event order?<select id="evidence-order"><option value="sounds-first">Voicing uses the old accent; accent moves later</option><option value="accent-first">Accent fixed on the first syllable before voicing</option><option value="unknown">Allow either order</option></select></label><button id="copy-evidence" type="button">Use the current hypothetical output</button><p id="inference-action-status" role="status"></p><div id="inference-results"></div><div class="proposal-controls"><label for="proposed-accent">My proposed older accent<select id="proposed-accent"><option value="0">Position 1</option><option value="1">Position 2</option><option value="2">Position 3</option><option value="3">Position 4</option></select></label><button id="check-accent" type="button" class="primary">Check my accent proposal</button><button id="restore-proposal" type="button">Restore the checked evidence</button><button id="save-evidence-csv" type="button">Save accent account CSV</button></div><p class="method-note">These are constraints on Verner’s invented word, not a recovered ancient text. A compatible accent need not be uniquely identified. No match means this one-accent model and order assumption cannot produce those consonants together.</p></div>
+<section id="inquiry" class="inquiry" aria-labelledby="inquiry-title"><h3 id="inquiry-title">Which consonant would you read next?</h3><p>Withhold part of Verner’s invented word. Which missing consonant would separate the explanations that still fit? Compare both outcomes, then try a reading.</p><p class="small">A modern thought experiment; no historical copy is damaged. <a href="#infer">Edit consonants or check a proposal</a>.</p><label class="inquiry-order" for="inquiry-order">Event order for this inquiry<select id="inquiry-order"><option value="sounds-first">Voicing uses the old accent; accent moves later</option><option value="accent-first">Accent fixed on the first syllable before voicing</option><option value="unknown">Allow either order</option></select></label><div class="inquiry-actions"><button id="inquiry-start" type="button">Withhold all three consonants</button><button id="inquiry-erasure" type="button">Try the shared complete output</button></div><p id="inquiry-status" role="status" tabindex="-1"></p><div id="inquiry-results"></div><div class="inquiry-actions"><button id="save-inquiry-csv" type="button">Save reading plan CSV</button><button id="inquiry-source" type="button">Inspect Verner’s four outputs</button></div></section>
 <div class="conditions"><div><h3>Accent alone is not the condition</h3><p>Test a schematic dental fricative. The older accent only matters inside a word and among voiced sounds.</p></div><fieldset><legend>Change its environment</legend><label><input id="initial" type="checkbox"> At the start of a word</label><label><input id="neighbors" type="checkbox" checked> Neighbors are voiced</label><label><input id="preceding" type="checkbox"> Immediately preceding syllable accented</label></fieldset><p id="condition-result" role="status"></p></div></section>
 
 <section id="source" class="source" aria-labelledby="source-title"><div class="section-intro"><h2 id="source-title">Read the claim.<br>Keep the difficult line.</h2><p>Karl Verner, <cite lang="de">Eine ausnahme der ersten lautverschiebung</cite>, volume 23 (1877), pp. 97–130. Signed Copenhagen, July 1875. New English translations accompany normalized German excerpts.</p></div><div class="reading-buttons" aria-label="Source readings">${readings.map((entry) => `<button type="button" data-reading="${entry.id}" aria-pressed="false">${e(entry.title)}</button>`).join("")}</div>
@@ -189,13 +192,20 @@ function renderExperiment(): void {
 }
 
 function renderInference(): void {
+  required("#inquiry-status").textContent = "";
   required<HTMLSelectElement>("#evidence-dorsal").value = state.inference.evidence.dorsal;
   required<HTMLSelectElement>("#evidence-sibilant").value = state.inference.evidence.sibilant;
   required<HTMLSelectElement>("#evidence-dental").value = state.inference.evidence.dental;
   required<HTMLSelectElement>("#evidence-order").value = state.inference.order;
+  required<HTMLSelectElement>("#inquiry-order").value = state.inference.order;
   required<HTMLSelectElement>("#proposed-accent").value = String(state.inference.accent);
   required<HTMLButtonElement>("#restore-proposal").disabled = state.inference.submitted === null;
   required("#inference-results").innerHTML = inferenceMarkup(state.inference);
+  required("#inquiry-results").innerHTML = inquiryMarkup(
+    state.inference.evidence,
+    state.inference.order,
+    true,
+  );
 }
 
 function renderConditions(): void {
@@ -362,6 +372,7 @@ for (const id of [
       dental: required<HTMLSelectElement>("#evidence-dental").value as Evidence["dental"],
     };
     state.inference.order = required<HTMLSelectElement>("#evidence-order").value as AssumedOrder;
+    required("#inquiry-status").textContent = "";
     state.inference.accent = Number(
       required<HTMLSelectElement>("#proposed-accent").value,
     ) as Accent;
@@ -371,6 +382,60 @@ for (const id of [
       "Changed the working evidence. The last checked proposal keeps its original inputs.";
   });
 }
+required("#inquiry-results").addEventListener("click", (event) => {
+  const button =
+    event.target instanceof Element
+      ? event.target.closest<HTMLButtonElement>("[data-inquiry-key]")
+      : null;
+  if (!button) return;
+  const key = button.dataset.inquiryKey as keyof Evidence;
+  const value = button.dataset.inquiryValue;
+  // Buttons are generated from the finite partition, never from imported markup.
+  state.inference.evidence = { ...state.inference.evidence, [key]: value };
+  renderInference();
+  save();
+  required("#inquiry-status").textContent =
+    `Tried ${value} as a hypothetical reading of the ${key === "dorsal" ? "first" : key === "sibilant" ? "second" : "third"} consonant. No historical observation was added. The checked proposal is unchanged.`;
+  required("#inquiry-status").focus({ preventScroll: true });
+  required("#inquiry-status").scrollIntoView({ block: "nearest" });
+});
+required("#inquiry-order").addEventListener("change", () => {
+  state.inference.order = required<HTMLSelectElement>("#inquiry-order").value as AssumedOrder;
+  renderInference();
+  save();
+  required("#inquiry-status").textContent =
+    "Changed the inquiry’s event-order assumption. The working consonants and checked proposal are kept.";
+});
+required("#inquiry-start").addEventListener("click", () => {
+  state.inference.evidence = { dorsal: "?", sibilant: "?", dental: "?" };
+  renderInference();
+  save();
+  required("#inquiry-status").textContent =
+    "Withheld all three consonants. Kept your event-order assumption and last checked proposal. Compare the branches below.";
+});
+required("#inquiry-erasure").addEventListener("click", () => {
+  state.inference.evidence = { dorsal: "h", sibilant: "z", dental: "d" };
+  state.inference.order = "unknown";
+  renderInference();
+  save();
+  required("#inquiry-status").textContent =
+    "Example: h / z / d with either event order allowed. All consonants are supplied; five explanations still fit. The checked proposal is unchanged.";
+});
+required("#save-inquiry-csv").addEventListener("click", () => {
+  download(
+    "akzent-reading-plan.csv",
+    inquiryCsv(state.inference.evidence, state.inference.order),
+    "text/csv;charset=utf-8",
+  );
+  required("#inquiry-status").textContent =
+    "Saved hypothetical reading branches and complete-output groups for the current inputs. Counts are not probabilities.";
+});
+required("#inquiry-source").addEventListener("click", () => {
+  renderReading("fiction");
+  void showPage(115);
+  required("#source").scrollIntoView({ block: "start" });
+  required<HTMLSelectElement>("#source-page").focus({ preventScroll: true });
+});
 required("#copy-evidence").addEventListener("click", () => {
   const [dorsal, sibilant, dental] = experiment(state.accent, state.order).fricatives;
   state.inference.evidence = { dorsal, sibilant, dental };

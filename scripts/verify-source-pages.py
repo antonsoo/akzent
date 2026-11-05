@@ -1,6 +1,6 @@
 """Compare independently downloaded PDF page renders with retained source images.
 
-Usage: python3 scripts/verify-source-pages.py /path/to/77512.pdf
+Usage: python3 scripts/verify-source-pages.py /path/to/77512.pdf [output.json]
 Requires Poppler and Pillow. The PDF is supplied explicitly; this script never
 substitutes an existing image for a fresh render.
 """
@@ -39,6 +39,6 @@ with tempfile.TemporaryDirectory(prefix='akzent-primary-pages-') as directory:
     with ThreadPoolExecutor(max_workers=3) as pool:
         pages = list(pool.map(compare, provenance['pages']))
 report = {'checkedAtUtc': datetime.now(timezone.utc).isoformat(), 'primaryPdf': provenance['pdf'], 'pdfBytes': len(pdf_bytes), 'pdfSha256': sha(pdf_bytes), 'pdfIdentityMatchesProvenance': True, 'renderer': version, 'renderParameters': ['-singlefile', '-scale-to', '2600', '-gray', '-png'], 'pages': pages, 'boundary': 'Fresh renders from the independently downloaded primary volume, complete page dimensions and decoded RGB equality. Philological transcription and translation still require reading the printed pages.'}
-out = root / 'docs/audit/primary-page-renders.json'
+out = Path(sys.argv[2]) if len(sys.argv) > 2 else root / 'docs/audit/primary-page-renders.json'
 out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
 print(f"Primary PDF identity and fresh complete-page renders agree for all {len(pages)} retained images.")
