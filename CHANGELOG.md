@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Keep the reader alive while a controlling worker verifies an active slow body,
+  accepting only matching monotone progress and retaining the independent total
+  ceiling, final source hash and shared-transfer repair.
+
 - Audit both goals: minimize surviving accent/order scenarios or surviving old
   accent positions. Show the different rankings, ties and lack of a guaranteed
   accent reduction; retain both metrics in the reading-plan CSV.

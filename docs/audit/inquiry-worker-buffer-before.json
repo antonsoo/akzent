@@ -1,0 +1,33 @@
+{
+  "before": false,
+  "results": [
+    {
+      "browser": "chromium",
+      "flowingWorkerBodyRejected": true,
+      "afterMs": 20043,
+      "message": "Page 115 could not be shown. No source bytes arrived for 20 seconds. Loading sources/verner-115.png stopped; your notebook has been kept. Reconnect and choose the page again."
+    },
+    {
+      "browser": "firefox",
+      "flowingWorkerBodyRejected": true,
+      "afterMs": 20062,
+      "message": "Page 115 could not be shown. No source bytes arrived for 20 seconds. Loading sources/verner-115.png stopped; your notebook has been kept. Reconnect and choose the page again."
+    }
+  ],
+  "transfers": [
+    {
+      "mode": "active",
+      "began": 1793916517759,
+      "sent": 113140,
+      "closedAfterMs": 20018,
+      "completed": false
+    },
+    {
+      "mode": "active",
+      "began": 1793916540528,
+      "sent": 118797,
+      "closedAfterMs": 20232,
+      "completed": false
+    }
+  ]
+}

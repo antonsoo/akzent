@@ -96,6 +96,50 @@ try {
   ]) {
     const browser = await engine.launch({ headless: true });
     try {
+      if (process.env.TRANSFER_REPAIR_ONLY === "1") {
+        mode = "normal";
+        const context = await browser.newContext();
+        const page = await context.newPage();
+        await page.goto(url);
+        await waitText(page, "#offline-status", "available offline");
+        await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+        await page.evaluate(async () => {
+          const edition = document.querySelector('meta[name="akzent-edition"]').content;
+          await (await caches.open(`akzent-${edition}`)).delete(
+            new URL("sources/verner-115.png", location.href),
+          );
+        });
+        mode = "active";
+        const transfersBefore = events.length;
+        const at = Date.now();
+        await page.locator("#source-page").selectOption("115");
+        if (process.env.TRANSFER_BUFFERING_BEFORE === "1") {
+          await waitText(page, "#source-status", "No source bytes arrived");
+          results.push({
+            browser: name,
+            flowingWorkerBodyRejected: true,
+            afterMs: Date.now() - at,
+            message: await page.locator("#source-status").textContent(),
+          });
+        } else {
+          await waitText(page, "#source-status", "Page 115 checked");
+          await waitText(page, "#offline-status", "available offline");
+          assert.equal(
+            events.length - transfersBefore,
+            1,
+            "Foreground and repair must share one stream",
+          );
+          results.push({
+            browser: name,
+            activeWorkerRepairMs: Date.now() - at,
+            oneNetworkTransfer: events.length - transfersBefore,
+            sourceShown: true,
+            offlineReadinessRecovered: true,
+          });
+        }
+        await context.close();
+        continue;
+      }
       mode = "normal";
       const context = await browser.newContext({
         serviceWorkers: "block",
@@ -222,5 +266,5 @@ try {
 }
 await writeFile(
   join(output, "review.json"),
-  `${JSON.stringify({ before, results, transfers: events }, null, 2)}\n`,
+  `${JSON.stringify({ before, workerBufferingBefore: process.env.TRANSFER_BUFFERING_BEFORE === "1", results, transfers: events }, null, 2)}\n`,
 );

@@ -69,16 +69,29 @@ async function storedInventoryComplete() {
 }
 async function matches(response, file) {
   if (!response || !response.ok) return false;
-  const bytes = await response.arrayBuffer();
-  return bytes.byteLength === file.bytes && await digest(bytes) === file.hash;
+  try {
+    const {bytes} = await readTransfer(async () => response, file.bytes);
+    return await digest(bytes) === file.hash;
+  } catch {return false;}
 }
 const transfers = new Map();
 async function fetchEdition(file) {
   let pending = transfers.get(file.url);
   if (!pending) {
     pending = (async () => {
+      let lastNotice = -Infinity;
+      const progress = received => {
+        if (Date.now() - lastNotice < 500) return;
+        lastNotice = Date.now();
+        void self.clients.matchAll({type:'window'}).then(pages => {
+          for (const page of pages) page.postMessage({
+            type:'verified-transfer-progress', edition:EDITION, url:file.url, received
+          });
+        }).catch(() => {});
+      };
       const {bytes, contentType} = await readTransfer(
-        signal => fetch(file.url, {cache:'reload', signal}), file.bytes
+        signal => fetch(file.url, {cache:'reload', signal}), file.bytes, undefined,
+        {onProgress:progress}
       );
       if (await digest(bytes) !== file.hash) throw new Error('Edition mismatch: ' + file.url);
       return new Response(bytes, {headers:{'Content-Type':contentType}});

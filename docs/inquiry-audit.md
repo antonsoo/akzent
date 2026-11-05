@@ -73,6 +73,36 @@ three-minute ceiling case but retains active, silent, canceled, oversized and
 cold-install transfers. The transport also has direct byte/cancellation checks
 in [transfer.test.ts](../tests/transfer.test.ts).
 
+## A healthy worker can hide its body
+
+A second audit reproduced a different 20-second failure after the first fix.
+With a controlling worker, delete the cached p. 115 and read it while its correct
+body streams for 31 seconds. The worker buffers the body for its own size/hash
+check before returning a Response; without progress messages, the page sees no
+bytes during that healthy wait. Both browsers rejected the read at about twenty
+seconds. This was not covered by testing a direct reader and a cold installer
+separately.
+
+The revised worker reports received-byte progress, throttled to at most twice
+per second per transfer. A reader accepts only strictly increasing counts for
+its exact file, edition and captured controlling worker. Another file, stale
+edition, wrong worker, duplicate count or out-of-range count cannot renew its
+silence timer. The overall three-minute ceiling remains independent of these
+messages. Receiving progress never establishes source identity: the complete
+body must still pass its size and SHA-256 checks before display or saving.
+
+The foreground read and offline repair share one network transfer. Cached bodies
+also use bounded reads before their hashes are accepted. The [before-worker
+receipt](audit/inquiry-worker-buffer-before.json) and [corrected repair receipt](audit/inquiry-worker-buffer-after.json)
+record the missing-cache experiment in both browsers. The separate [Node 24
+comparison](audit/inquiry-progress-node24.json) checks the resulting full build.
+
+Reproduce this additional case with:
+
+```sh
+TRANSFER_REPAIR_ONLY=1 npm run test:transfers
+```
+
 ## State and artifact review
 
 Inquiry undo is limited to this visit and one prior inquiry change. Opening a

@@ -33,6 +33,40 @@ export async function verifiedBytes(item: Asset, signal?: AbortSignal): Promise<
   }
 }
 
+/** A controlling worker verifies a body before exposing its Response. Only
+ * monotone progress for this exact file, edition and captured controller is liveness.
+ */
+function listenForWorkerProgress(item: Asset, activity: () => void): () => void {
+  const api = navigator.serviceWorker;
+  const controller = api?.controller;
+  const edition = document.querySelector<HTMLMetaElement>('meta[name="akzent-edition"]')?.content;
+  if (!controller || !edition) return () => {};
+  let received = 0;
+  const listen = (event: MessageEvent<unknown>) => {
+    if (event.source !== controller || api.controller !== controller) return;
+    const data = event.data as {
+      type?: unknown;
+      edition?: unknown;
+      url?: unknown;
+      received?: unknown;
+    } | null;
+    if (
+      data?.type !== "verified-transfer-progress" ||
+      data.edition !== edition ||
+      data.url !== `${import.meta.env.BASE_URL}${item.path}` ||
+      typeof data.received !== "number" ||
+      !Number.isSafeInteger(data.received) ||
+      data.received <= received ||
+      data.received > item.bytes
+    )
+      return;
+    received = data.received;
+    activity();
+  };
+  api.addEventListener("message", listen);
+  return () => api.removeEventListener("message", listen);
+}
+
 async function readVerifiedBytes(item: Asset, signal?: AbortSignal): Promise<ArrayBuffer> {
   let bytes: ArrayBuffer;
   try {
@@ -57,6 +91,7 @@ async function readVerifiedBytes(item: Asset, signal?: AbortSignal): Promise<Arr
       },
       item.bytes,
       signal,
+      { listenForProgress: (activity) => listenForWorkerProgress(item, activity) },
     ));
   } catch (error) {
     if (error instanceof DOMException && error.name === "TimeoutError")

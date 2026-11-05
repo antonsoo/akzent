@@ -1,0 +1,35 @@
+{
+  "before": false,
+  "results": [
+    {
+      "browser": "chromium",
+      "activeWorkerRepairMs": 31210,
+      "oneNetworkTransfer": 1,
+      "sourceShown": true,
+      "offlineReadinessRecovered": true
+    },
+    {
+      "browser": "firefox",
+      "activeWorkerRepairMs": 31199,
+      "oneNetworkTransfer": 1,
+      "sourceShown": true,
+      "offlineReadinessRecovered": true
+    }
+  ],
+  "transfers": [
+    {
+      "mode": "active",
+      "began": 1793916638999,
+      "sent": 180996,
+      "closedAfterMs": 31031,
+      "completed": true
+    },
+    {
+      "mode": "active",
+      "began": 1793916676870,
+      "sent": 180996,
+      "closedAfterMs": 31027,
+      "completed": true
+    }
+  ]
+}

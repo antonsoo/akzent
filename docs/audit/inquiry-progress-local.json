@@ -1,0 +1,109 @@
+{
+  "publication": "local only; no push or deployment",
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1440,
+      "edition": "9e237788001c0007c9dd",
+      "conditionalPartitions": [
+        "If h: 5 scenarios",
+        "If g: 3 scenarios",
+        "If s: 1 scenario",
+        "If z: 7 scenarios",
+        "If þ: 1 scenario",
+        "If d: 7 scenarios"
+      ],
+      "keyboardFocusRetained": true,
+      "checkedProposalFixed": true,
+      "impossibleReadingRetained": true,
+      "completeOutputScenarios": 5,
+      "sourcePngVerified": true,
+      "jsonRoundTrip": true,
+      "scriptFreeReadingWithoutHttp": true,
+      "originStopped": true,
+      "browserNetworkOffline": false,
+      "offlineReloadAndOperation": true,
+      "lightViolations": 0,
+      "darkViolations": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 375,
+      "edition": "9e237788001c0007c9dd",
+      "conditionalPartitions": [
+        "If h: 5 scenarios",
+        "If g: 3 scenarios",
+        "If s: 1 scenario",
+        "If z: 7 scenarios",
+        "If þ: 1 scenario",
+        "If d: 7 scenarios"
+      ],
+      "keyboardFocusRetained": true,
+      "checkedProposalFixed": true,
+      "impossibleReadingRetained": true,
+      "completeOutputScenarios": 5,
+      "sourcePngVerified": true,
+      "jsonRoundTrip": true,
+      "scriptFreeReadingWithoutHttp": true,
+      "originStopped": true,
+      "browserNetworkOffline": false,
+      "offlineReloadAndOperation": true,
+      "lightViolations": 0,
+      "darkViolations": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "firefox",
+      "width": 1440,
+      "edition": "9e237788001c0007c9dd",
+      "conditionalPartitions": [
+        "If h: 5 scenarios",
+        "If g: 3 scenarios",
+        "If s: 1 scenario",
+        "If z: 7 scenarios",
+        "If þ: 1 scenario",
+        "If d: 7 scenarios"
+      ],
+      "keyboardFocusRetained": true,
+      "checkedProposalFixed": true,
+      "impossibleReadingRetained": true,
+      "completeOutputScenarios": 5,
+      "sourcePngVerified": true,
+      "jsonRoundTrip": true,
+      "scriptFreeReadingWithoutHttp": true,
+      "originStopped": true,
+      "browserNetworkOffline": false,
+      "offlineReloadAndOperation": true,
+      "lightViolations": 0,
+      "darkViolations": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "firefox",
+      "width": 375,
+      "edition": "9e237788001c0007c9dd",
+      "conditionalPartitions": [
+        "If h: 5 scenarios",
+        "If g: 3 scenarios",
+        "If s: 1 scenario",
+        "If z: 7 scenarios",
+        "If þ: 1 scenario",
+        "If d: 7 scenarios"
+      ],
+      "keyboardFocusRetained": true,
+      "checkedProposalFixed": true,
+      "impossibleReadingRetained": true,
+      "completeOutputScenarios": 5,
+      "sourcePngVerified": true,
+      "jsonRoundTrip": true,
+      "scriptFreeReadingWithoutHttp": true,
+      "originStopped": true,
+      "browserNetworkOffline": false,
+      "offlineReloadAndOperation": true,
+      "lightViolations": 0,
+      "darkViolations": 0,
+      "pageErrors": []
+    }
+  ]
+}

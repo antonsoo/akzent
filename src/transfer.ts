@@ -5,6 +5,10 @@ export async function readTransfer(
   open: (signal: AbortSignal) => Promise<Response>,
   expectedBytes: number,
   signal?: AbortSignal,
+  hooks: {
+    onProgress?: (received: number) => void;
+    listenForProgress?: (activity: () => void) => () => void;
+  } = {},
 ): Promise<{ bytes: ArrayBuffer; contentType: string }> {
   const controller = new AbortController();
   let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
@@ -38,7 +42,9 @@ export async function readTransfer(
   controller.signal.addEventListener("abort", onAbort, { once: true });
   signal?.addEventListener("abort", cancel, { once: true });
   resetIdle();
+  let stopActivity: (() => void) | undefined;
   try {
+    stopActivity = hooks.listenForProgress?.(resetIdle);
     if (signal?.aborted) cancel();
     // Attach the abort race even when the caller was already aborted.
     const response = await Promise.race([
@@ -67,6 +73,7 @@ export async function readTransfer(
         );
       retained.set(value, offset);
       offset += value.byteLength;
+      hooks.onProgress?.(offset);
     }
     if (offset !== expectedBytes)
       throw new Error(
@@ -81,6 +88,7 @@ export async function readTransfer(
     if (controller.signal.aborted) throw controller.signal.reason;
     throw error;
   } finally {
+    stopActivity?.();
     clearTimeout(idle);
     clearTimeout(ceiling);
     signal?.removeEventListener("abort", cancel);
